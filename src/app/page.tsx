@@ -1,5 +1,5 @@
 import FormStudentsPtval from "@/views/form-students-ptval/form-students-ptval";
 
-const Home = () => <FormStudentsPtval />;
+const HomePage = () => <FormStudentsPtval />;
 
-export default Home;
+export default HomePage;
