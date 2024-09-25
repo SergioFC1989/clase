@@ -42,9 +42,10 @@ const FormStudentsPtval = () => {
     }
   };
 
-  if (isLoading) {
+  if (!isLoading) {
     return (
       <Spinner
+        className="flex justify-start items-start"
         label="Generando contenido..."
         ariaLive="assertive"
         labelPosition="right"
