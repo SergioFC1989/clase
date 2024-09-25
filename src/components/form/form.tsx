@@ -77,7 +77,13 @@ const Form = ({
           ))}
         </div>
       ))}
-      <PrimaryButton className="my-4" text={labelButtonPrimary} type="submit" />
+      <div className="w-full flex justify-center">
+        <PrimaryButton
+          className="my-4 sm:w-3/4 items-center"
+          text={labelButtonPrimary}
+          type="submit"
+        />
+      </div>
     </form>
   );
 };

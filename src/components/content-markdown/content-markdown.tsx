@@ -19,9 +19,11 @@ const ContentMarkdown: React.FC<ContentMarkdownProps> = ({
       {title}
     </Text>
     <Markdown>{content}</Markdown>
-    <DefaultButton className="mb-4" onClick={onClick}>
-      {labelButton}
-    </DefaultButton>
+    <div className="w-full flex justify-center">
+      <DefaultButton className="my-4 sm:w-3/4 items-center" onClick={onClick}>
+        {labelButton}
+      </DefaultButton>
+    </div>
   </div>
 );
 
