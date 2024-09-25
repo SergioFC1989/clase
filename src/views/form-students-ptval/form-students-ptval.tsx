@@ -42,7 +42,7 @@ const FormStudentsPtval = () => {
     }
   };
 
-  if (!isLoading) {
+  if (isLoading) {
     return (
       <Spinner
         className="flex justify-start items-start"
