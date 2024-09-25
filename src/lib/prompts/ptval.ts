@@ -1,7 +1,7 @@
 import { StudentsProps } from "../utils/types";
 
 export const promptPTVAL = (data: StudentsProps[]) => `
-  Crea un plan detallado para un curso escolar (2024-2025) dirigido a un alumno determinado con necesidades educativas especiales, 
+  Crea un plan detallado para un curso escolar en el año corriente en Andalucía, dirigido a un alumno determinado con necesidades educativas especiales, 
   basado en los tres ámbitos de desarrollo según la Orden del 19 de octubre de 2002 de la Junta de Andalucía, 
   para la transición a la vida adulta laboral (PTVAL). Importante no sobrepasar el limite de la respuesta por parte de la IA. Formato de respuesta estructurado, organizado y con listados.
 
