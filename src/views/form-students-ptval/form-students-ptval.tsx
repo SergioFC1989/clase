@@ -7,7 +7,6 @@ import {
   Spinner,
   Text,
   TextField,
-  values,
 } from "@fluentui/react";
 
 import Markdown from "marked-react";
