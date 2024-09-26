@@ -1,22 +1,24 @@
 "use client";
 
+import Markdown from "marked-react";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
-import { Spinner, Text } from "@fluentui/react";
+import { DefaultButton, Separator, Spinner, Text } from "@fluentui/react";
 
-import { formDataPTVAL } from "./form-data-ptval";
+import { defaultValuesPTVAL, formDataPTVAL } from "./form-data-ptval";
 
-import ContentMarkdown from "@/components/content-markdown/content-markdown";
 import Form from "@/components/form/form";
 
-import { promptPTVAL } from "@/lib/prompts/ptval";
-import { fetcher } from "@/lib/utils/fetcher";
-import { StudentsProps } from "@/lib/utils/types";
+import { promptPTVAL } from "@/prompts/ptval";
+
+import { fetcher } from "@/utils/fetcher";
+import { StudentsProps } from "@/utils/types";
 
 const FormStudentsPtval = () => {
-  const { handleSubmit, register, control } = useForm();
-
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues: defaultValuesPTVAL,
+  });
   const [content, setContent] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -36,38 +38,57 @@ const FormStudentsPtval = () => {
 
   if (isLoading) {
     return (
-      <Spinner
-        className="flex justify-start items-start"
-        label="Generando contenido..."
-        ariaLive="assertive"
-        labelPosition="right"
-      />
+      <>
+        <Text variant="xLarge" className="text-base sm:text-lg">
+          Por favor, espere...
+        </Text>
+        <Separator />
+        <Spinner
+          className="flex justify-start items-start"
+          label="Generando ficha de evaluación inicial para PTVAL"
+          ariaLive="assertive"
+          labelPosition="right"
+        />
+      </>
     );
   }
 
   if (!isLoading && content) {
     return (
-      <ContentMarkdown
-        title="Contenido PTVAL generado por la I.A"
-        content={content}
-        labelButton="Volver al formulario"
-        onClick={() => setContent("")}
-      />
+      <>
+        <Text variant="xLarge" className="text-base sm:text-lg">
+          Plan detallado PTVAL
+        </Text>
+        <Separator />
+        <section className="flex flex-col gap-4">
+          <Markdown value={content} />
+          <div className="w-full flex justify-center">
+            <DefaultButton
+              className="my-4 w-3/4 lg:w-2/4 items-center"
+              onClick={() => setContent("")}
+            >
+              Volver al formulario
+            </DefaultButton>
+          </div>
+        </section>
+      </>
     );
   }
 
   return (
-    <div className="flex flex-col">
-      <Text variant="xLarge" className="mb-4">
+    <div className="w-full xl:w-1/2 flex flex-col">
+      <Text variant="xLarge" className="text-base sm:text-lg">
         Ficha de Evaluación Inicial para PTVAL
       </Text>
+      <Separator />
       <Form
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
-        register={register}
         control={control}
+        reset={reset}
         data={formDataPTVAL}
-        labelButtonPrimary="Aceptar"
+        labelButtonSubmit="Aceptar"
+        labelButtonReset="Limpiar"
       />
     </div>
   );

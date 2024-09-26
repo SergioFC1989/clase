@@ -1,7 +1,7 @@
 import { Dropdown } from "@fluentui/react";
 import { Controller } from "react-hook-form";
 
-import { FormDataProps } from "@/lib/utils/types";
+import { FormDataProps } from "@/utils/types";
 
 const InputDropdown = ({
   name = "",
@@ -17,13 +17,14 @@ const InputDropdown = ({
     control={control}
     name={name}
     rules={{ required }}
-    render={({ field: { onChange, value } }) => (
+    render={({ field: { onChange, onBlur, value } }) => (
       <Dropdown
         label={label}
         className="w-full"
-        onChange={(e, option) =>
+        onBlur={onBlur}
+        onChange={(_, option) =>
           !isMultiSelect
-            ? onChange(option?.text)
+            ? onChange(option?.key)
             : option?.selected
             ? onChange([...(Array.isArray(value) ? value : []), option?.text])
             : onChange(
@@ -32,6 +33,8 @@ const InputDropdown = ({
                 )
               )
         }
+        selectedKey={!isMultiSelect ? value : undefined}
+        selectedKeys={isMultiSelect ? value : undefined}
         placeholder={placeholder}
         options={options}
         multiSelect={isMultiSelect}

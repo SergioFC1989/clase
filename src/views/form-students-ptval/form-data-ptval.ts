@@ -1,5 +1,5 @@
-import { disorderOptions, defaultOptions } from "@/lib/utils/options";
-import { FormDataProps, StudentsProps } from "@/lib/utils/types";
+import { disorderOptions, defaultOptions } from "@/utils/options";
+import { FormDataProps, StudentsProps } from "@/utils/types";
 
 interface FormDataPTVALProps extends FormDataProps {
   name: keyof StudentsProps;
@@ -98,3 +98,16 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     isMultiline: true,
   },
 ];
+
+export const defaultValuesPTVAL: StudentsProps = {
+  nombre: "",
+  edad: 0,
+  discapacidad: "",
+  "psicomotricidad fina": "",
+  "psicomotricidad gruesa": "",
+  "coeficiente intelectual": "",
+  "comunicacion escrita": "",
+  "comunicacion verbal": "",
+  "intencionalidad comunicativa": "",
+  observaciones: "",
+};

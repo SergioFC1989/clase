@@ -2,22 +2,22 @@ import { IDropdownOption } from "@fluentui/react";
 import { Control, FieldValues, UseFormRegister } from "react-hook-form";
 
 export interface StudentsProps {
-  nombre: string;
-  edad: number;
-  discapacidad: string;
-  "psicomotricidad fina": string;
-  "psicomotricidad gruesa": string;
-  "coeficiente intelectual": string;
-  "intencionalidad comunicativa": string;
-  "comunicacion escrita": string;
-  "comunicacion verbal": string;
-  observaciones: string;
+  nombre?: string;
+  edad?: number;
+  discapacidad?: string;
+  "psicomotricidad fina"?: string;
+  "psicomotricidad gruesa"?: string;
+  "coeficiente intelectual"?: string;
+  "intencionalidad comunicativa"?: string;
+  "comunicacion escrita"?: string;
+  "comunicacion verbal"?: string;
+  observaciones?: string;
 }
 
 export type FormDataProps = {
   type?: "text" | "dropdown" | "slider";
   label?: string;
-  name?: string;
+  name: string;
   placeholder?: string;
   col?: number;
   required?: boolean;

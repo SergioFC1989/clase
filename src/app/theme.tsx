@@ -1,32 +1,33 @@
 "use client";
 
+import { initializeIcons } from "@fluentui/font-icons-mdl2";
 import { createTheme, ThemeProvider } from "@fluentui/react";
 import { ReactNode, useEffect, useState } from "react";
 
 const myTheme = createTheme({
   palette: {
-    themePrimary: "#000000",
-    themeLighterAlt: "#898989",
-    themeLighter: "#737373",
-    themeLight: "#595959",
-    themeTertiary: "#373737",
-    themeSecondary: "#2f2f2f",
-    themeDarkAlt: "#252525",
-    themeDark: "#151515",
-    themeDarker: "#0b0b0b",
-    neutralLighterAlt: "#f8f8f8",
-    neutralLighter: "#f4f4f4",
-    neutralLight: "#eaeaea",
-    neutralQuaternaryAlt: "#dadada",
+    themePrimary: "#28a88f",
+    themeLighterAlt: "#f4fcfa",
+    themeLighter: "#d4f1eb",
+    themeLight: "#b1e5db",
+    themeTertiary: "#6ecbb8",
+    themeSecondary: "#3bb39b",
+    themeDarkAlt: "#249780",
+    themeDark: "#1f806c",
+    themeDarker: "#175e50",
+    neutralLighterAlt: "#faf9f8",
+    neutralLighter: "#f3f2f1",
+    neutralLight: "#edebe9",
+    neutralQuaternaryAlt: "#e1dfdd",
     neutralQuaternary: "#d0d0d0",
-    neutralTertiaryAlt: "#c8c8c8",
-    neutralTertiary: "#595959",
-    neutralSecondary: "#373737",
-    neutralSecondaryAlt: "#373737",
-    neutralPrimaryAlt: "#2f2f2f",
-    neutralPrimary: "#000000",
-    neutralDark: "#151515",
-    black: "#0b0b0b",
+    neutralTertiaryAlt: "#c8c6c4",
+    neutralTertiary: "#afaead",
+    neutralSecondary: "#959493",
+    neutralSecondaryAlt: "#959493",
+    neutralPrimaryAlt: "#7c7a79",
+    neutralPrimary: "#141414",
+    neutralDark: "#484746",
+    black: "#2e2d2d",
     white: "#ffffff",
   },
 });
@@ -41,6 +42,8 @@ const Theme = ({ children }: { children: ReactNode }) => {
   if (!isHidrated) {
     return null;
   }
+
+  initializeIcons();
 
   return (
     <ThemeProvider applyTo="body" theme={myTheme}>

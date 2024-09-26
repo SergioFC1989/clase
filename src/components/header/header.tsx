@@ -1,17 +1,13 @@
 "use client";
 
-import { Separator } from "@fluentui/react";
 import Image from "next/image";
 
-import Logo from "@/assets/logo.png";
+import Logo from "@/assets/images/logo.png";
 
 const Header = () => {
   return (
-    <header>
-      <div className="flex">
-        <Image src={Logo} alt="Logo" width={320} height={320} />
-      </div>
-      <Separator />
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 px-2">
+      <Image src={Logo} alt="Logo" width={320} height={320} />
     </header>
   );
 };

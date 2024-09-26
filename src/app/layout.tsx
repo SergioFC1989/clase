@@ -16,13 +16,15 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => (
-  <html lang="en">
-    <body className="w-full lg:w-1/2 flex flex-col h-screen px-1 lg:px-10 py-5 bg-white ">
-      <Theme>
+  <html lang="es">
+    <Theme>
+      <body className="w-full h-screen">
         <Header />
-        {children}
-      </Theme>
-    </body>
+        <div className="w-full h-screen overflow-auto flex flex-col px-1 lg:px-10 pt-32 pb-10 bg-white">
+          {children}
+        </div>
+      </body>
+    </Theme>
   </html>
 );
 
