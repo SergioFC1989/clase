@@ -27,20 +27,18 @@ const Form = ({
   data = [],
   labelButtonPrimary,
 }: FormProps) => {
-  const groupedFields: { [key: string]: FormDataProps[] } = groupByCol({
-    data,
-  });
+  const groupedFields: { [key: string]: FormDataProps[] } = groupByCol(data);
 
   return (
     <form
-      className="flex flex-col gap-4"
+      className="w-full flex flex-col gap-4"
       onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
       onSubmit={handleSubmit(onSubmit)}
     >
       {Object.keys(groupedFields).map((col) => (
-        <div key={col} className="flex gap-4">
+        <div key={col} className="w-full flex gap-2">
           {groupedFields[col].map((field) => (
-            <div className="flex w-full" key={field.name}>
+            <div className="w-full flex flex-col sm:flex-row" key={field.name}>
               {field.type === "text" && (
                 <InputTextField
                   label={field.label}
@@ -79,7 +77,7 @@ const Form = ({
       ))}
       <div className="w-full flex justify-center">
         <PrimaryButton
-          className="my-4 sm:w-3/4 items-center"
+          className="my-4 sm:w-1/4 items-center"
           text={labelButtonPrimary}
           type="submit"
         />

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
-import { Spinner } from "@fluentui/react";
+import { Spinner, Text } from "@fluentui/react";
 
 import { formDataPTVAL } from "./form-data-ptval";
 
@@ -51,20 +51,25 @@ const FormStudentsPtval = () => {
         title="Contenido PTVAL generado por la I.A"
         content={content}
         labelButton="Volver al formulario"
-        onClick={() => window.location.reload()}
+        onClick={() => setContent("")}
       />
     );
   }
 
   return (
-    <Form
-      handleSubmit={handleSubmit}
-      onSubmit={onSubmit}
-      register={register}
-      control={control}
-      data={formDataPTVAL}
-      labelButtonPrimary="Aceptar"
-    />
+    <div className="flex flex-col">
+      <Text variant="xLarge" className="mb-4">
+        Ficha de Evaluación Inicial para PTVAL
+      </Text>
+      <Form
+        handleSubmit={handleSubmit}
+        onSubmit={onSubmit}
+        register={register}
+        control={control}
+        data={formDataPTVAL}
+        labelButtonPrimary="Aceptar"
+      />
+    </div>
   );
 };
 

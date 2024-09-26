@@ -17,7 +17,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => (
   <html lang="en">
-    <body className="w-full lg:w-1/2 flex flex-col h-screen px-2 lg:px-10 py-5 bg-white ">
+    <body className="w-full lg:w-1/2 flex flex-col h-screen px-1 lg:px-10 py-5 bg-white ">
       <Theme>
         <Header />
         {children}

@@ -37,6 +37,7 @@ export const promptPTVAL = (data: StudentsProps[]) => `
     return `
     -Nombre: ${student.nombre ?? "No especificado"}
     -Edad: ${student.edad ?? "No especificado"}
+    -Tipo Discapacidad: ${student.discapacidad ?? "No especificado"}
     -Psicomotricidad fina: ${
       student["psicomotricidad fina"] ?? "No especificado"
     }
