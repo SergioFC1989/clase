@@ -1,5 +1,5 @@
-import AnnualPlanForm from "@/views/annual-plan-form/annual-plan-form";
+import AnnualFormPlan from "@/views/annual-form-plan/annual-form-plan";
 
-const HomePage = () => <AnnualPlanForm />;
+const HomePage = () => <AnnualFormPlan />;
 
 export default HomePage;
