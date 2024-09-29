@@ -3,7 +3,7 @@ import { FieldValues, useForm } from "react-hook-form";
 
 import { generateAnnualPlan } from "@/prompts/generate-ptval-plan";
 import { apiRequest } from "@/services/api";
-import { AnnualPlanDefaultValues } from "./data";
+import { AnnualPlanDefaultValues } from "../views/annual-plan-form/data";
 
 export const useAnnualPlan = () => {
   const { handleSubmit, control, reset } = useForm({

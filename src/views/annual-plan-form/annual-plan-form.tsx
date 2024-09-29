@@ -4,9 +4,9 @@ import { DefaultButton, Separator, Spinner, Text } from "@fluentui/react";
 import Markdown from "marked-react";
 
 import Form from "@/components/form/form";
+import { useAnnualPlan } from "@/hooks/useAnnualPlan";
 
 import { AnualPlanFormFields } from "./data";
-import { useAnnualPlan } from "./useAnnualPlan";
 
 const AnnualPlanForm = () => {
   const {
