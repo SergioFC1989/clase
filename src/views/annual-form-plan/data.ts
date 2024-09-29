@@ -118,7 +118,7 @@ export const AnualPlanFormFields: FormFieldsProps[] = [
 ];
 
 export const AnnualPlanDefaultValues: AnnualPlanProps = {
-  etapa: "",
+  "etapa educativa": "",
   modalidad: "",
   nombre: "",
   edad: 0,

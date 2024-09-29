@@ -13,7 +13,7 @@ interface FormProps {
     callback: (data: FieldValues) => void
   ) => (e?: React.BaseSyntheticEvent) => Promise<void>;
   onSubmit: (data: FieldValues) => Promise<void>;
-  reset: () => void;
+  reset?: () => void;
   control: Control<FieldValues>;
   listFields: FormFieldsProps[];
   labelButtonSubmit: string;
@@ -56,7 +56,7 @@ const Form = ({
         className="w-full flex flex-col gap-4"
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
         onSubmit={handleSubmit(onSubmit)}
-        onReset={() => reset()}
+        onReset={() => reset && reset()}
       >
         {Object.keys(groupedFields).map((col) => (
           <div
@@ -107,11 +107,13 @@ const Form = ({
             text={labelButtonSubmit}
             type="submit"
           />
-          <DefaultButton
-            className="my-4 w-3/4 lg:w-2/4 items-center"
-            text={labelButtonReset}
-            type="reset"
-          />
+          {typeof reset === "function" && (
+            <DefaultButton
+              className="my-4 w-3/4 lg:w-2/4 items-center"
+              text={labelButtonReset}
+              type="reset"
+            />
+          )}
         </div>
       </form>
     </>

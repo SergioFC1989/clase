@@ -2,7 +2,7 @@ import { IDropdownOption } from "@fluentui/react";
 import { Control, FieldValues, UseFormRegister } from "react-hook-form";
 
 export interface AnnualPlanProps {
-  etapa?: string;
+  "etapa educativa"?: string;
   modalidad?: string;
   nombre?: string;
   edad?: number;
