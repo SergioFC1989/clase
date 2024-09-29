@@ -4,7 +4,6 @@ import InputDropdown from "./input-dropdown/input-dropdown";
 import InputSlider from "./input-slider/input-slider";
 import InputTextField from "./input-text-field/input-text-field";
 
-import { groupByCol } from "@/utils/functions";
 import { FormFieldsProps } from "@/utils/types";
 import { DefaultButton, PrimaryButton } from "@fluentui/react";
 
@@ -15,21 +14,35 @@ interface FormProps {
   onSubmit: (data: FieldValues) => Promise<void>;
   reset: () => void;
   control: Control<FieldValues>;
-  data: FormFieldsProps[];
+  listFields: FormFieldsProps[];
   labelButtonSubmit: string;
   labelButtonReset: string;
 }
+
+const groupByCol = (data: FormFieldsProps[]) => {
+  return data.reduce((acc, field) => {
+    const col = field.col;
+    if (col !== undefined && !acc[col]) {
+      acc[col] = [];
+    }
+    if (col !== undefined) {
+      acc[col].push(field);
+    }
+    return acc;
+  }, {} as { [key: number]: typeof data });
+};
 
 const Form = ({
   handleSubmit,
   onSubmit,
   reset,
   control,
-  data = [],
+  listFields = [],
   labelButtonSubmit,
   labelButtonReset,
 }: FormProps) => {
-  const groupedFields: { [key: string]: FormFieldsProps[] } = groupByCol(data);
+  const groupedFields: { [key: string]: FormFieldsProps[] } =
+    groupByCol(listFields);
 
   return (
     <form

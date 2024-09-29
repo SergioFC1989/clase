@@ -2,37 +2,22 @@
 
 import { DefaultButton, Separator, Spinner, Text } from "@fluentui/react";
 import Markdown from "marked-react";
-import { useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
-
-import { defaultValuesPTVAL, formFieldsPTVAL } from "./data";
 
 import Form from "@/components/form/form";
 
-import { generateAnnualPlan } from "@/prompts/generate-ptval-plan";
+import { AnualPlanFormFields } from "./data";
+import { useAnnualPlan } from "./useAnnualPlan";
 
-import { fetcher } from "@/utils/fetcher";
-
-const FormStudentsPtval = () => {
-  const { handleSubmit, control, reset } = useForm({
-    defaultValues: defaultValuesPTVAL,
-  });
-  const [content, setContent] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const onSubmit = async (data: FieldValues) => {
-    setIsLoading(true);
-    try {
-      const response = await fetcher("/api/gemini/generate-content", "POST", {
-        prompt: generateAnnualPlan(data),
-      });
-      setContent(response.content);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+const AnnualPlanForm = () => {
+  const {
+    handleSubmit,
+    control,
+    reset,
+    onSubmit,
+    content,
+    onChangeContent,
+    isLoading,
+  } = useAnnualPlan();
 
   if (isLoading) {
     return (
@@ -63,7 +48,7 @@ const FormStudentsPtval = () => {
           <div className="w-full flex justify-center">
             <DefaultButton
               className="my-4 w-3/4 lg:w-2/4 items-center"
-              onClick={() => setContent("")}
+              onClick={() => onChangeContent("")}
             >
               Volver al formulario
             </DefaultButton>
@@ -80,11 +65,11 @@ const FormStudentsPtval = () => {
       </Text>
       <Separator />
       <Form
-        handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
         control={control}
         reset={reset}
-        data={formFieldsPTVAL}
+        handleSubmit={handleSubmit}
+        onSubmit={onSubmit}
+        listFields={AnualPlanFormFields}
         labelButtonSubmit="Aceptar"
         labelButtonReset="Limpiar"
       />
@@ -92,4 +77,4 @@ const FormStudentsPtval = () => {
   );
 };
 
-export default FormStudentsPtval;
+export default AnnualPlanForm;

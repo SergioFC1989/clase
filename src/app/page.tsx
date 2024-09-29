@@ -1,5 +1,5 @@
-import FormStudentsPtval from "@/views/form-students-ptval/form-students-ptval";
+import AnnualPlanForm from "@/views/annual-plan-form/annual-plan-form";
 
-const HomePage = () => <FormStudentsPtval />;
+const HomePage = () => <AnnualPlanForm />;
 
 export default HomePage;

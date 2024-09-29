@@ -1,12 +1,12 @@
 import {
+  defaultDisorderOptions,
   defaultEducationalStageOptions,
+  defaultLevelOptions,
   defaultModalityOptions,
-  defaultOptions,
-  disorderOptions,
 } from "@/utils/options";
-import { FormFieldsProps, AnnualPlanProps } from "@/utils/types";
+import { AnnualPlanProps, FormFieldsProps } from "@/utils/types";
 
-export const formFieldsPTVAL: FormFieldsProps[] = [
+export const AnualPlanFormFields: FormFieldsProps[] = [
   {
     type: "dropdown",
     label: "Etapa educativa",
@@ -49,7 +49,7 @@ export const formFieldsPTVAL: FormFieldsProps[] = [
     name: "discapacidad",
     placeholder: "Seleccione una o varias opciones...",
     col: 4,
-    options: disorderOptions,
+    options: defaultDisorderOptions,
     isMultiSelect: true,
   },
   {
@@ -58,7 +58,7 @@ export const formFieldsPTVAL: FormFieldsProps[] = [
     name: "psicomotricidad fina",
     placeholder: "Seleccione una opción...",
     col: 5,
-    options: defaultOptions,
+    options: defaultLevelOptions,
     required: true,
   },
   {
@@ -67,7 +67,7 @@ export const formFieldsPTVAL: FormFieldsProps[] = [
     name: "psicomotricidad gruesa",
     placeholder: "Seleccione una opción...",
     col: 5,
-    options: defaultOptions,
+    options: defaultLevelOptions,
     required: true,
   },
   {
@@ -76,7 +76,7 @@ export const formFieldsPTVAL: FormFieldsProps[] = [
     name: "coeficiente intelectual",
     placeholder: "Seleccione una opción...",
     col: 6,
-    options: defaultOptions,
+    options: defaultLevelOptions,
     required: true,
   },
   {
@@ -85,7 +85,7 @@ export const formFieldsPTVAL: FormFieldsProps[] = [
     name: "comunicacion escrita",
     placeholder: "Seleccione una opción...",
     col: 7,
-    options: defaultOptions,
+    options: defaultLevelOptions,
     required: true,
   },
   {
@@ -94,7 +94,7 @@ export const formFieldsPTVAL: FormFieldsProps[] = [
     name: "comunicacion verbal",
     placeholder: "Seleccione una opción...",
     col: 7,
-    options: defaultOptions,
+    options: defaultLevelOptions,
     required: true,
   },
   {
@@ -103,7 +103,7 @@ export const formFieldsPTVAL: FormFieldsProps[] = [
     name: "intencionalidad comunicativa",
     placeholder: "Seleccione una opción...",
     col: 8,
-    options: defaultOptions,
+    options: defaultLevelOptions,
     required: true,
   },
   {
@@ -117,7 +117,9 @@ export const formFieldsPTVAL: FormFieldsProps[] = [
   },
 ];
 
-export const defaultValuesPTVAL: AnnualPlanProps = {
+export const AnnualPlanDefaultValues: AnnualPlanProps = {
+  etapa: "",
+  modalidad: "",
   nombre: "",
   edad: 0,
   discapacidad: "",

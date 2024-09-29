@@ -1,7 +1,7 @@
-export const defaultOptions = [
-  { key: "alto", text: "Alto" },
-  { key: "medio", text: "Medio" },
-  { key: "bajo", text: "Bajo" },
+export const defaultLevelOptions = [
+  { key: "Alto", text: "Alto" },
+  { key: "Medio", text: "Medio" },
+  { key: "Bajo", text: "Bajo" },
 ];
 
 export const defaultModalityOptions = [
@@ -24,11 +24,11 @@ export const defaultEducationalStageOptions = [
   { key: "Educación Infantil", text: "Educación Infantil" },
   { key: "Educación Primaria", text: "Educación Primaria" },
   { key: "Educación Secundaria", text: "Educación Secundaria" },
-  { key: "Post Obligatorias", text: "Post Obligatorias" },
+  { key: "Educación Post Obligatoria", text: "Educación Post Obligatoria" },
   { key: "PTVAL", text: "PTVAL" },
 ];
 
-export const disorderOptions = [
+export const defaultDisorderOptions = [
   {
     key: "Amputaciones o malformaciones congénitas",
     text: "Amputaciones o malformaciones congénitas",

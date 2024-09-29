@@ -8,7 +8,7 @@ Crea un plan detallado para un curso escolar en el año corriente en Andalucía,
 -Post Obligatoria: Orden del 30 de mayo de 2023 de la Junta de Andalucía.
 -PTVAL: Orden del 19 de septiembre de 2002 de la Junta de Andalucía.
 
-Importante no sobrepasar el limite de la respuesta por parte de la IA. Formato de respuesta estructurado, organizado y con listados.
+Importante no sobrepasar el limite de la respuesta por parte de la IA. Formato de respuesta Markdown: estructurado, organizado y con listados.
 
 Cada alumno tiene características únicas que deben ser tomadas en cuenta al diseñar las actividades y todo de manera individual. Hay que tener muy en cuenta los datos del alumno que adjunto a continuación para poder realizar el plan detallado:
 ${(Object.keys(data) as (keyof AnnualPlanProps)[])
