@@ -1,7 +1,9 @@
 import { IDropdownOption } from "@fluentui/react";
 import { Control, FieldValues, UseFormRegister } from "react-hook-form";
 
-export interface StudentsProps {
+export interface AnnualPlanProps {
+  etapa?: string;
+  modalidad?: string;
   nombre?: string;
   edad?: number;
   discapacidad?: string;
@@ -14,7 +16,7 @@ export interface StudentsProps {
   observaciones?: string;
 }
 
-export type FormDataProps = {
+export type FormFieldsProps = {
   type?: "text" | "dropdown" | "slider";
   label?: string;
   name: string;

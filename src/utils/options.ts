@@ -4,6 +4,30 @@ export const defaultOptions = [
   { key: "bajo", text: "Bajo" },
 ];
 
+export const defaultModalityOptions = [
+  { key: "Aula ordinaria", text: "A: Aula ordinaria" },
+  {
+    key: "Aula ordinaria con apoyo variable",
+    text: "B: Aula ordinaria con apoyo variable",
+  },
+  {
+    key: "Aula específica dentro de un centro ordinario",
+    text: "C: Aula específica dentro de un centro ordinario",
+  },
+  {
+    key: "Centro específico de educación especial",
+    text: "D: Centro específico de educación especial",
+  },
+];
+
+export const defaultEducationalStageOptions = [
+  { key: "Educación Infantil", text: "Educación Infantil" },
+  { key: "Educación Primaria", text: "Educación Primaria" },
+  { key: "Educación Secundaria", text: "Educación Secundaria" },
+  { key: "Post Obligatorias", text: "Post Obligatorias" },
+  { key: "PTVAL", text: "PTVAL" },
+];
+
 export const disorderOptions = [
   {
     key: "Amputaciones o malformaciones congénitas",

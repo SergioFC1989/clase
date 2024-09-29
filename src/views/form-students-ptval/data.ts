@@ -1,24 +1,43 @@
-import { disorderOptions, defaultOptions } from "@/utils/options";
-import { FormDataProps, StudentsProps } from "@/utils/types";
+import {
+  defaultEducationalStageOptions,
+  defaultModalityOptions,
+  defaultOptions,
+  disorderOptions,
+} from "@/utils/options";
+import { FormFieldsProps, AnnualPlanProps } from "@/utils/types";
 
-interface FormDataPTVALProps extends FormDataProps {
-  name: keyof StudentsProps;
-}
-
-export const formDataPTVAL: FormDataPTVALProps[] = [
+export const formFieldsPTVAL: FormFieldsProps[] = [
+  {
+    type: "dropdown",
+    label: "Etapa educativa",
+    name: "etapa educativa",
+    placeholder: "Seleccione una opción...",
+    col: 1,
+    options: defaultEducationalStageOptions,
+    required: true,
+  },
+  {
+    type: "dropdown",
+    label: "Modalidad",
+    name: "modalidad",
+    placeholder: "Seleccione una opción...",
+    col: 1,
+    options: defaultModalityOptions,
+    required: true,
+  },
   {
     type: "text",
     label: "Nombre",
     name: "nombre",
     placeholder: "Introduzca un nombre...",
-    col: 1,
+    col: 2,
     required: true,
   },
   {
     type: "slider",
     label: "Edad",
     name: "edad",
-    col: 2,
+    col: 3,
     min: 0,
     max: 50,
     step: 1,
@@ -29,9 +48,8 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     label: "Tipo de discapacidad",
     name: "discapacidad",
     placeholder: "Seleccione una o varias opciones...",
-    col: 3,
+    col: 4,
     options: disorderOptions,
-    required: true,
     isMultiSelect: true,
   },
   {
@@ -39,7 +57,7 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     label: "Psicomotricidad fina",
     name: "psicomotricidad fina",
     placeholder: "Seleccione una opción...",
-    col: 4,
+    col: 5,
     options: defaultOptions,
     required: true,
   },
@@ -48,7 +66,7 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     label: "Psicomotricidad gruesa",
     name: "psicomotricidad gruesa",
     placeholder: "Seleccione una opción...",
-    col: 4,
+    col: 5,
     options: defaultOptions,
     required: true,
   },
@@ -57,7 +75,7 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     label: "Coeficiente intelectual",
     name: "coeficiente intelectual",
     placeholder: "Seleccione una opción...",
-    col: 5,
+    col: 6,
     options: defaultOptions,
     required: true,
   },
@@ -66,7 +84,7 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     label: "Comunicacion escrita",
     name: "comunicacion escrita",
     placeholder: "Seleccione una opción...",
-    col: 6,
+    col: 7,
     options: defaultOptions,
     required: true,
   },
@@ -75,7 +93,7 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     label: "Comunicacion verbal",
     name: "comunicacion verbal",
     placeholder: "Seleccione una opción...",
-    col: 6,
+    col: 7,
     options: defaultOptions,
     required: true,
   },
@@ -84,7 +102,7 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     label: "Intencionalidad comunicativa",
     name: "intencionalidad comunicativa",
     placeholder: "Seleccione una opción...",
-    col: 7,
+    col: 8,
     options: defaultOptions,
     required: true,
   },
@@ -93,13 +111,13 @@ export const formDataPTVAL: FormDataPTVALProps[] = [
     label: "Observaciones",
     name: "observaciones",
     placeholder: "Si lo desea, deje sus observaciones...",
-    col: 8,
+    col: 9,
     rows: 5,
     isMultiline: true,
   },
 ];
 
-export const defaultValuesPTVAL: StudentsProps = {
+export const defaultValuesPTVAL: AnnualPlanProps = {
   nombre: "",
   edad: 0,
   discapacidad: "",

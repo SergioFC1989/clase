@@ -1,7 +1,7 @@
 import { TextField } from "@fluentui/react";
 import { Controller } from "react-hook-form";
 
-import { FormDataProps } from "@/utils/types";
+import { FormFieldsProps } from "@/utils/types";
 
 const InputTextField = ({
   label,
@@ -12,11 +12,11 @@ const InputTextField = ({
   isMultiline = false,
   rows,
   ...props
-}: FormDataProps) => (
+}: FormFieldsProps) => (
   <Controller
     name={name}
     control={control}
-    rules={{ required }} // Reglas de validación
+    rules={{ required }}
     render={({ field: { onChange, onBlur, value } }) => (
       <TextField
         className="w-full"

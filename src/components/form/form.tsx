@@ -5,7 +5,7 @@ import InputSlider from "./input-slider/input-slider";
 import InputTextField from "./input-text-field/input-text-field";
 
 import { groupByCol } from "@/utils/functions";
-import { FormDataProps } from "@/utils/types";
+import { FormFieldsProps } from "@/utils/types";
 import { DefaultButton, PrimaryButton } from "@fluentui/react";
 
 interface FormProps {
@@ -15,7 +15,7 @@ interface FormProps {
   onSubmit: (data: FieldValues) => Promise<void>;
   reset: () => void;
   control: Control<FieldValues>;
-  data: FormDataProps[];
+  data: FormFieldsProps[];
   labelButtonSubmit: string;
   labelButtonReset: string;
 }
@@ -29,7 +29,7 @@ const Form = ({
   labelButtonSubmit,
   labelButtonReset,
 }: FormProps) => {
-  const groupedFields: { [key: string]: FormDataProps[] } = groupByCol(data);
+  const groupedFields: { [key: string]: FormFieldsProps[] } = groupByCol(data);
 
   return (
     <form

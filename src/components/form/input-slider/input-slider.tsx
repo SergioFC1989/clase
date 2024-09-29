@@ -1,7 +1,7 @@
 import { Slider } from "@fluentui/react";
 import { Controller } from "react-hook-form";
 
-import { FormDataProps } from "@/utils/types";
+import { FormFieldsProps } from "@/utils/types";
 
 const InputSlider = ({
   label,
@@ -12,7 +12,7 @@ const InputSlider = ({
   max,
   step,
   ...props
-}: FormDataProps) => (
+}: FormFieldsProps) => (
   <Controller
     control={control}
     name={name}

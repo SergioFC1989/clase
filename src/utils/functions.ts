@@ -1,6 +1,6 @@
-import { FormDataProps } from "./types";
+import { FormFieldsProps } from "./types";
 
-export const groupByCol = (data: FormDataProps[]) => {
+export const groupByCol = (data: FormFieldsProps[]) => {
   return data.reduce((acc, field) => {
     const col = field.col;
     if (col !== undefined && !acc[col]) {

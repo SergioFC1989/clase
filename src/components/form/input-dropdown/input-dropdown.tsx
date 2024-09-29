@@ -1,18 +1,18 @@
 import { Dropdown } from "@fluentui/react";
 import { Controller } from "react-hook-form";
 
-import { FormDataProps } from "@/utils/types";
+import { FormFieldsProps } from "@/utils/types";
 
 const InputDropdown = ({
   name = "",
   label = "",
   control,
   placeholder,
-  required,
+  required = false,
   options = [],
   isMultiSelect = false,
   ...props
-}: FormDataProps) => (
+}: FormFieldsProps) => (
   <Controller
     control={control}
     name={name}
@@ -38,7 +38,7 @@ const InputDropdown = ({
         placeholder={placeholder}
         options={options}
         multiSelect={isMultiSelect}
-        required
+        required={required}
         {...props}
       />
     )}

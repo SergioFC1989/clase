@@ -1,19 +1,17 @@
 "use client";
 
+import { DefaultButton, Separator, Spinner, Text } from "@fluentui/react";
 import Markdown from "marked-react";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
-import { DefaultButton, Separator, Spinner, Text } from "@fluentui/react";
-
-import { defaultValuesPTVAL, formDataPTVAL } from "./form-data-ptval";
+import { defaultValuesPTVAL, formFieldsPTVAL } from "./data";
 
 import Form from "@/components/form/form";
 
-import { promptPTVAL } from "@/prompts/ptval";
+import { generateAnnualPlan } from "@/prompts/generate-ptval-plan";
 
 import { fetcher } from "@/utils/fetcher";
-import { StudentsProps } from "@/utils/types";
 
 const FormStudentsPtval = () => {
   const { handleSubmit, control, reset } = useForm({
@@ -26,7 +24,7 @@ const FormStudentsPtval = () => {
     setIsLoading(true);
     try {
       const response = await fetcher("/api/gemini/generate-content", "POST", {
-        prompt: promptPTVAL([data as StudentsProps]),
+        prompt: generateAnnualPlan(data),
       });
       setContent(response.content);
     } catch (error) {
@@ -45,7 +43,7 @@ const FormStudentsPtval = () => {
         <Separator />
         <Spinner
           className="flex justify-start items-start"
-          label="Generando ficha de evaluación inicial para PTVAL"
+          label="Generando programación anual invidualizada..."
           ariaLive="assertive"
           labelPosition="right"
         />
@@ -57,7 +55,7 @@ const FormStudentsPtval = () => {
     return (
       <>
         <Text variant="xLarge" className="text-base sm:text-lg">
-          Plan detallado PTVAL
+          Informe Programación Anual Individualizado
         </Text>
         <Separator />
         <section className="flex flex-col gap-4">
@@ -78,7 +76,7 @@ const FormStudentsPtval = () => {
   return (
     <div className="w-full xl:w-1/2 flex flex-col">
       <Text variant="xLarge" className="text-base sm:text-lg">
-        Ficha de Evaluación Inicial para PTVAL
+        Programación Anual Individualizado
       </Text>
       <Separator />
       <Form
@@ -86,7 +84,7 @@ const FormStudentsPtval = () => {
         onSubmit={onSubmit}
         control={control}
         reset={reset}
-        data={formDataPTVAL}
+        data={formFieldsPTVAL}
         labelButtonSubmit="Aceptar"
         labelButtonReset="Limpiar"
       />
