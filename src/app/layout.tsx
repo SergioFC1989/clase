@@ -20,7 +20,7 @@ const RootLayout = ({
     <Theme>
       <body className="w-full h-screen">
         <Header />
-        <div className="w-full h-screen overflow-auto flex flex-col px-1 lg:px-10 pt-32 pb-10 bg-white">
+        <div className="w-full h-screen overflow-auto print:h-auto flex flex-col px-1 lg:px-10 pt-32 print:pt-10 pb-10 bg-white">
           {children}
         </div>
       </body>

@@ -1,35 +1,49 @@
-import { DefaultButton, Separator, Text } from "@fluentui/react";
-import Markdown from "marked-react";
+import { IconButton, Separator, Text } from "@fluentui/react";
+import Markdown from "react-markdown";
+import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
 
 interface ReportSectionProps {
   title: string;
   content: string;
-  onClick: () => void;
-  labelButton: string;
+  onClickNavigateBack?: () => void;
 }
 
 const ReportSection = ({
   title,
   content,
-  onClick,
-  labelButton,
+  onClickNavigateBack,
 }: ReportSectionProps) => (
   <>
-    <Text variant="xLarge" className="text-base sm:text-lg">
-      {title}
-    </Text>
-    <Separator />
-    <section className="flex flex-col gap-4">
-      <Markdown value={content} />
-      <div className="w-full flex justify-center">
-        <DefaultButton
-          className="my-4 w-3/4 lg:w-2/4 items-center"
-          onClick={onClick}
-        >
-          {labelButton}
-        </DefaultButton>
+    <div className="w-full flex flex-col s:flex-row s:justify-between s:items-center">
+      <Text variant="xLarge" className="text-base sm:text-lg">
+        {title}
+      </Text>
+      <div className="flex">
+        <IconButton
+          className="print:hidden"
+          iconProps={{ iconName: "NavigateBack", style: { fontSize: 18 } }}
+          title="Atrás"
+          ariaLabel="Atrás"
+          onClick={onClickNavigateBack}
+        />
+        <IconButton
+          className="print:hidden"
+          iconProps={{ iconName: "Save", style: { fontSize: 18 } }}
+          title="Guardar"
+          ariaLabel="Guardar"
+          onClick={() => window.print()}
+        />
       </div>
-    </section>
+    </div>
+    <Separator />
+    <Markdown
+      className="whitespace-pre-wrap"
+      rehypePlugins={[rehypeKatex]}
+      remarkPlugins={[remarkGfm]}
+    >
+      {content}
+    </Markdown>
   </>
 );
 

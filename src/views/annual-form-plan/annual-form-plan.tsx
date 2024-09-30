@@ -33,8 +33,7 @@ const AnnualFormPlan = () => {
       <ReportSection
         title="Informe Programación Anual Individualizado"
         content={content}
-        onClick={() => onChangeContent("")}
-        labelButton="Volver al formulario"
+        onClickNavigateBack={() => onChangeContent("")}
       />
     );
   }
