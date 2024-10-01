@@ -21,8 +21,8 @@ const PTVALStudentData = ({ content }: PTVALStudentDataProps) => {
   const descriptionStudent = `${content?.alumno.edad} años - ${content?.alumno.modalidad} - ${content?.alumno["etapa educativa"]}`;
 
   return (
-    <section className="w-1/2 flex flex-col p-3 rounded-xl print bg-gray-100">
-      <div className="w-full flex flex-col gap-2">
+    <section className="w-full md:w-1/3 print:w-1/3 h-max flex flex-col p-3 rounded-xl print bg-gray-50">
+      <div className="w-full flex flex-col gap-1">
         <Text variant="xLargePlus" title={content?.alumno.nombre}>
           {content?.alumno.nombre}
         </Text>
