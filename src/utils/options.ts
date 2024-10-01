@@ -5,27 +5,34 @@ export const defaultLevelOptions = [
 ];
 
 export const defaultModalityOptions = [
-  { key: "Aula ordinaria", text: "A: Aula ordinaria" },
+  { key: "Aula ordinaria", text: "A: Aula ordinaria", disabled: true },
   {
     key: "Aula ordinaria con apoyo variable",
     text: "B: Aula ordinaria con apoyo variable",
+    disabled: true,
   },
   {
     key: "Aula específica dentro de un centro ordinario",
     text: "C: Aula específica dentro de un centro ordinario",
+    disabled: true,
   },
   {
     key: "Centro específico de educación especial",
     text: "D: Centro específico de educación especial",
+    disabled: false,
   },
 ];
 
 export const defaultEducationalStageOptions = [
-  { key: "Educación Infantil", text: "Educación Infantil" },
-  { key: "Educación Primaria", text: "Educación Primaria" },
-  { key: "Educación Secundaria", text: "Educación Secundaria" },
-  { key: "Educación Post Obligatoria", text: "Educación Post Obligatoria" },
-  { key: "PTVAL", text: "PTVAL" },
+  { key: "Educación Infantil", text: "Educación Infantil", disabled: true },
+  { key: "Educación Primaria", text: "Educación Primaria", disabled: true },
+  { key: "Educación Secundaria", text: "Educación Secundaria", disabled: true },
+  {
+    key: "Educación Post Obligatoria",
+    text: "Educación Post Obligatoria",
+    disabled: true,
+  },
+  { key: "PTVAL", text: "PTVAL", disabled: false },
 ];
 
 export const defaultDisorderOptions = [

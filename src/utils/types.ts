@@ -6,7 +6,7 @@ export interface AnnualPlanProps {
   modalidad?: string;
   nombre?: string;
   edad?: number;
-  discapacidad?: string;
+  discapacidad?: string[];
   "psicomotricidad fina"?: string;
   "psicomotricidad gruesa"?: string;
   "coeficiente intelectual"?: string;
@@ -32,4 +32,23 @@ export type FormFieldsProps = {
   rows?: number;
   isMultiSelect?: boolean;
   isMultiline?: boolean;
+};
+
+export type ReportStudentProps = {
+  alumno: AnnualPlanProps;
+  plan: {
+    ambito: string;
+    horas: string;
+    contenidos: string;
+    actividades: {
+      nombre: string;
+      descripcion: string;
+      evaluacion: string;
+    }[];
+    evaluacion_general: string;
+  }[];
+};
+
+export type ResponseAnnualPlanProps = {
+  ptval: ReportStudentProps | null;
 };

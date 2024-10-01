@@ -1,21 +1,22 @@
+import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
-import { generateAnnualPlan } from "@/prompts/generate-ptval-plan";
-import { apiRequest } from "@/services/api";
 import { AnnualPlanDefaultValues } from "../views/annual-form-plan/data";
 
+import { useAppContext } from "@/context/app-context";
+import { generateAnnualPlan } from "@/prompts/generate-ptval-plan";
+import { apiRequest } from "@/services/api";
+import { sanitizerJSON } from "@/utils/sanitizers";
+
 export const useAnnualPlan = () => {
+  const router = useRouter();
+  const { content, setContent } = useAppContext();
   const { handleSubmit, control, reset } = useForm({
     defaultValues: AnnualPlanDefaultValues,
   });
 
-  const [content, setContent] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const onChangeContent = (value: string) => {
-    setContent(value);
-  };
 
   const onSubmit = useCallback(
     async (data: FieldValues) => {
@@ -29,14 +30,26 @@ export const useAnnualPlan = () => {
           }
         );
 
-        setContent(response);
+        const serializedResponse = {
+          alumno: data,
+          plan: sanitizerJSON(response),
+        };
+
+        //Refactorizar mas adelante con las demas etapas educativas
+        if (data["etapa educativa"] === "PTVAL") {
+          setContent((prev) => ({
+            ...prev,
+            ptval: serializedResponse,
+          }));
+          return router.push("/ptval-report");
+        }
       } catch (error) {
         console.error(error);
       } finally {
         setIsLoading(false);
       }
     },
-    [setContent, setIsLoading]
+    [router, setContent]
   );
 
   const values = useMemo(
@@ -46,7 +59,6 @@ export const useAnnualPlan = () => {
       reset,
       onSubmit,
       content,
-      onChangeContent,
       isLoading,
     }),
     [content, control, handleSubmit, isLoading, onSubmit, reset]

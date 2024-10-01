@@ -1,11 +1,12 @@
+import { DefaultButton, PrimaryButton } from "@fluentui/react";
 import { Control, FieldValues } from "react-hook-form";
-import { DefaultButton, PrimaryButton, Separator, Text } from "@fluentui/react";
 
 import InputDropdown from "./input-dropdown/input-dropdown";
 import InputSlider from "./input-slider/input-slider";
 import InputTextField from "./input-text-field/input-text-field";
 
 import { FormFieldsProps } from "@/utils/types";
+import TitleNav from "../title-nav/title-nav";
 
 interface FormProps {
   title?: string;
@@ -48,10 +49,7 @@ const Form = ({
 
   return (
     <>
-      <Text variant="xLarge" className="text-base sm:text-lg">
-        {title}
-      </Text>
-      <Separator />
+      <TitleNav title={title} />
       <form
         className="w-full flex flex-col gap-4"
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}

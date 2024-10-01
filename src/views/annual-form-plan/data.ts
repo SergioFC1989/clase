@@ -122,7 +122,7 @@ export const AnnualPlanDefaultValues: AnnualPlanProps = {
   modalidad: "",
   nombre: "",
   edad: 0,
-  discapacidad: "",
+  discapacidad: [],
   "psicomotricidad fina": "",
   "psicomotricidad gruesa": "",
   "coeficiente intelectual": "",

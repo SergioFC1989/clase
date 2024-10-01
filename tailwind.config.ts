@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -20,6 +21,43 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({
+      addComponents,
+    }: {
+      addComponents: (components: Record<string, any>) => void;
+    }) {
+      const newComponents = {
+        ".text-ellipsis-custom": {
+          "@apply text-ellipsis overflow-hidden whitespace-nowrap": {},
+        },
+      };
+
+      addComponents(newComponents);
+    },
+    function ({
+      addUtilities,
+    }: {
+      addUtilities: (
+        utilities: Record<string, any>,
+        options?: {
+          variants?: string[];
+          respectPrefix?: boolean;
+          respectImportant?: boolean;
+        }
+      ) => void;
+    }) {
+      const printUtilities = {
+        "@media print": {
+          ".print": {
+            "-webkit-print-color-adjust": "exact",
+            "print-color-adjust": "exact",
+          },
+        },
+      };
+
+      addUtilities(printUtilities);
+    },
+  ],
 };
 export default config;
