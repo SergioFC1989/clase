@@ -34,19 +34,20 @@ export type FormFieldsProps = {
   isMultiline?: boolean;
 };
 
+export type PlanDataProps = {
+  ambito: string;
+  horas: string;
+  contenidos: string;
+  actividades: {
+    nombre: string;
+    descripcion: string;
+    evaluacion: string;
+  }[];
+};
+
 export type ReportStudentProps = {
   alumno: AnnualPlanProps;
-  plan: {
-    ambito: string;
-    horas: string;
-    contenidos: string;
-    actividades: {
-      nombre: string;
-      descripcion: string;
-      evaluacion: string;
-    }[];
-    evaluacion_general: string;
-  }[];
+  plan: PlanDataProps[];
 };
 
 export type ResponseAnnualPlanProps = {

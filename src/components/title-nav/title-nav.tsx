@@ -20,16 +20,16 @@ const TitleNav = ({
         <div className="flex">
           <IconButton
             className="print:hidden"
-            iconProps={{ iconName: "NavigateBack", style: { fontSize: 18 } }}
+            iconProps={{ iconName: "NavigateBack", style: { fontSize: 20 } }}
             title="Atrás"
             ariaLabel="Atrás"
             onClick={onClickNavigateBack}
           />
           <IconButton
             className="print:hidden"
-            iconProps={{ iconName: "Save", style: { fontSize: 18 } }}
-            title="Guardar"
-            ariaLabel="Guardar"
+            iconProps={{ iconName: "Print", style: { fontSize: 20 } }}
+            title="Imprimir"
+            ariaLabel="Imprimir"
             onClick={() => window.print()}
           />
         </div>

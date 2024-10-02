@@ -1,15 +1,15 @@
-import { Text } from "@fluentui/react";
+import { Separator, Text } from "@fluentui/react";
 
-import { ResponseAnnualPlanProps } from "@/utils/types";
+import { AnnualPlanProps } from "@/utils/types";
 
 import Tag from "@/components/tag/tag";
 
 interface PTVALStudentDataProps {
-  content: ResponseAnnualPlanProps["ptval"] | null;
+  content: AnnualPlanProps | null;
 }
 
 const renderLabelWithDescription = (label: string, description?: string) => (
-  <div className="flex flex-col gap-1">
+  <div className="flex flex-col">
     <Text variant="medium" className=" font-bold">
       {label}
     </Text>
@@ -18,51 +18,58 @@ const renderLabelWithDescription = (label: string, description?: string) => (
 );
 
 const PTVALStudentData = ({ content }: PTVALStudentDataProps) => {
-  const descriptionStudent = `${content?.alumno.edad} años - ${content?.alumno.modalidad} - ${content?.alumno["etapa educativa"]}`;
+  if (!content) return null;
+
+  const descriptionStudent = `${content?.edad} años - ${content?.modalidad} - ${content?.["etapa educativa"]}`;
 
   return (
-    <section className="w-full md:w-1/3 print:w-1/3 h-max flex flex-col p-3 rounded-xl print bg-gray-50">
+    <section className="w-full md:w-1/3 print:w-1/3 h-max flex flex-col p-3">
       <div className="w-full flex flex-col gap-1">
-        <Text variant="xLargePlus" title={content?.alumno.nombre}>
-          {content?.alumno.nombre}
+        <Text
+          variant="xLargePlus"
+          className="text-primary-color"
+          title={content?.nombre}
+        >
+          {content?.nombre?.toUpperCase()}
         </Text>
         <Text variant="medium">{descriptionStudent}</Text>
-        {content?.alumno.discapacidad?.length ? (
+        {content?.discapacidad?.length ? (
           <article className="flex flex-wrap gap-2">
-            {content?.alumno.discapacidad.map((elem, index) => (
+            {content?.discapacidad.map((elem, index) => (
               <Tag key={index} description={elem} />
             ))}
           </article>
         ) : null}
-        <div className="flex flex-col gap-6 mt-8">
+        <Separator className="print" />
+        <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             {renderLabelWithDescription(
               "Psicomotricidad fina",
-              content?.alumno["psicomotricidad fina"]
+              content?.["psicomotricidad fina"]
             )}
             {renderLabelWithDescription(
               "Psicomotricidad gruesa",
-              content?.alumno["psicomotricidad gruesa"]
+              content?.["psicomotricidad gruesa"]
             )}
             {renderLabelWithDescription(
               "Coeficiente intelectual",
-              content?.alumno["coeficiente intelectual"]
+              content?.["coeficiente intelectual"]
             )}
             {renderLabelWithDescription(
               "Intencionalidad comunicativa",
-              content?.alumno["intencionalidad comunicativa"]
+              content?.["intencionalidad comunicativa"]
             )}
             {renderLabelWithDescription(
               "Comunicación escrita",
-              content?.alumno["comunicacion escrita"]
+              content?.["comunicacion escrita"]
             )}
             {renderLabelWithDescription(
               "Comunicación verbal",
-              content?.alumno["comunicacion verbal"]
+              content?.["comunicacion verbal"]
             )}
             {renderLabelWithDescription(
               "Observaciones",
-              content?.alumno.observaciones ?? "N/A"
+              content?.observaciones || "N/A"
             )}
           </div>
         </div>

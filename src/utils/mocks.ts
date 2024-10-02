@@ -2,131 +2,118 @@ export const mockedResponseAnnualPTVALPlan = {
   alumno: {
     "etapa educativa": "PTVAL",
     modalidad: "Centro específico de educación especial",
-    nombre: "Sergio Fernandez Cuellar",
-    edad: 7,
-    discapacidad: ["Diabetes tipo 1", "TEA", "TDAH", "Dislexia"],
+    nombre: "sergio",
+    edad: 14,
+    discapacidad: ["TDAH", "TEA"],
     "psicomotricidad fina": "Medio",
-    "psicomotricidad gruesa": "Medio",
+    "psicomotricidad gruesa": "Alto",
     "coeficiente intelectual": "Alto",
     "comunicacion escrita": "Medio",
-    "comunicacion verbal": "Alto",
-    "intencionalidad comunicativa": "Alto",
-    observaciones: "Conducta disruptiva en situaciones de frustración.",
+    "comunicacion verbal": "Bajo",
+    "intencionalidad comunicativa": "Bajo",
+    observaciones: "",
   },
   plan: [
     {
       ambito: "Autonomía Personal",
-      horas: "7-10",
+      horas: "8",
       contenidos:
-        "Planificación diaria, control de impulsos, resolución de problemas, conocimiento de su propio cuerpo, cambios hormonales y las emociones.",
+        "Planificación diaria, control de impulsos, gestión de emociones, autonomía en el aseo personal, habilidades para la vida diaria (comer, vestirse, organizar su espacio personal).",
       actividades: [
         {
-          nombre: "Rutinas diarias",
+          nombre: "Planificación de la semana",
           descripcion:
-            "Crear un horario visual con imágenes para las actividades diarias (levantarse, asearse, vestirse, desayunar, etc.).  Incentivar a Sergio a seguir la secuencia de actividades con apoyo visual y verbal.  Se introducirán gradualmente tareas de mayor complejidad a medida que se vaya adaptando.",
+            "Creación de un calendario semanal con las actividades diarias, incluyendo tareas escolares, actividades extraescolares y tiempo libre. Se utilizarán pictogramas y apoyo visual para facilitar la comprensión. Se trabajará la organización del tiempo y la gestión de la agenda.",
           evaluacion:
-            "Observación directa, lista de verificación para evaluar la autonomía en las diferentes actividades y registro anecdótico para registrar progresos y dificultades.",
+            "Observación directa del uso del calendario, participación en la planificación y cumplimiento de las actividades programadas. Se utilizará una lista de verificación para evaluar el progreso.",
         },
         {
-          nombre: "Control de Impulsos",
+          nombre: "Control de impulsos y gestión de emociones",
           descripcion:
-            "Jugar a juegos de mesa que impliquen turnos y esperar su turno (domino, damas, etc.). Utilizar técnicas de relajación como la respiración profunda cuando se sienta frustrado o irritable.  Realizar actividades con materiales manipulativos que permitan la canalización de la energía y el desarrollo de la motricidad fina (plastilina, puzzles, construcciones).",
+            "Utilización de técnicas de relajación (respiración profunda, mindfulness) y juegos de mesa para desarrollar la capacidad de control de impulsos y la gestión de emociones. Se trabajará la identificación de las emociones, la expresión adecuada de las mismas y estrategias para afrontar situaciones desafiantes.",
           evaluacion:
-            "Observación directa del comportamiento, registros anecdóticos de las reacciones en situaciones de frustración, lista de verificación para evaluar la capacidad de control de impulsos en diferentes contextos.",
+            "Observación directa del comportamiento durante las actividades, registros anecdóticos de las situaciones en las que se produce un control de impulsos adecuado o la gestión de emociones efectiva, y la participación en los juegos de mesa.",
         },
         {
-          nombre: "Resolución de Problemas",
+          nombre: "Autonomía en el aseo personal",
           descripcion:
-            "Plantear situaciones cotidianas que requieran la toma de decisiones (qué ponerse para salir, qué comer, etc.). Utilizar ayudas visuales como pictogramas o imágenes para facilitar la comprensión y elección.  Aplicar técnicas de resolución de problemas sencillas como el brainstorming o la lluvia de ideas.",
+            "Entrenamiento práctico en el aseo personal, incluyendo el lavado de manos, cepillado de dientes y el uso del baño. Se utilizarán ayudas visuales y se proporcionará apoyo individualizado según las necesidades. Se trabajará la independencia en la ejecución de estas tareas.",
           evaluacion:
-            "Observación directa de la capacidad de resolución, registro anecdótico de las estrategias utilizadas y lista de verificación para evaluar la autonomía en la toma de decisiones.",
+            "Observación directa de la ejecución de las tareas de aseo personal, listas de verificación de los pasos realizados y registros anecdóticos de la evolución en la independencia.",
         },
         {
-          nombre: "Cambios Fisiológicos",
+          nombre: "Habilidades para la vida diaria",
           descripcion:
-            "Utilizar materiales visuales para explicar los cambios físicos y hormonales propios de la adolescencia.  Fomentar la comunicación abierta sobre dudas o inquietudes, utilizando un lenguaje sencillo y adaptado a su comprensión.",
+            "Realización de actividades de la vida diaria, como preparar un desayuno sencillo, organizar su espacio personal, realizar la compra básica o usar el transporte público. Se trabajarán las habilidades de planificación, organización y resolución de problemas en situaciones cotidianas.",
           evaluacion:
-            "Observación directa de la participación en las conversaciones, registros anecdóticos de las preguntas e inquietudes y lista de verificación para evaluar la comprensión de los contenidos.",
-        },
-        {
-          nombre: "Gestionar Emociones",
-          descripcion:
-            "Utilizar cuentos o historias con personajes que expresen emociones. Fomentar la identificación de emociones en las historias y en su propia experiencia.  Realizar actividades de expresión artística como dibujo, pintura o modelado para canalizar las emociones.",
-          evaluacion:
-            "Observación directa de la capacidad de identificar emociones, registros anecdóticos de las reacciones emocionales y lista de verificación para evaluar el uso de estrategias de manejo emocional.",
+            "Observación directa de la participación en las actividades, listas de verificación de los pasos realizados y registros anecdóticos de la evolución en la independencia y la resolución de problemas.",
         },
       ],
-      evaluacion_general:
-        "Observación directa, listas de verificación, registros anecdóticos, autoevaluación con apoyo visual.",
     },
     {
       ambito: "Integración Social y Comunitaria",
-      horas: "6-8",
+      horas: "7",
       contenidos:
-        "Interacción social respetuosa, participación en la comunidad, educación vial, conocimiento de los supermercados.",
+        "Habilidades sociales, comunicación efectiva, participación en actividades grupales, respeto por las normas sociales, conciencia de la diversidad, relaciones interpersonales.",
       actividades: [
         {
-          nombre: "Taller de Juegos Cooperativos",
+          nombre: "Taller de comunicación y habilidades sociales",
           descripcion:
-            "Organizar juegos de mesa en grupo que fomenten la cooperación, el trabajo en equipo y la toma de turnos.  Utilizar juegos de roles para simular situaciones cotidianas de interacción social, como hacer cola en una tienda, pedir ayuda en un restaurante o hablar con un compañero.",
+            "Se realizarán juegos de rol para practicar diferentes situaciones sociales, como presentarse a alguien, iniciar una conversación, expresar emociones o pedir ayuda. Se utilizarán pictogramas y apoyo visual para facilitar la comprensión.",
           evaluacion:
-            "Observación directa de la interacción social, registros anecdóticos de las intervenciones y lista de verificación para evaluar la participación en los juegos.",
+            "Observación directa de la participación en los juegos de rol, registros anecdóticos de las situaciones en las que se produce una comunicación efectiva y la aplicación de las habilidades sociales aprendidas.",
         },
         {
-          nombre: "Salidas al Entorno",
+          nombre: "Salidas al entorno comunitario",
           descripcion:
-            "Realizar visitas guiadas al entorno comunitario (biblioteca, parque, centro de salud, etc.). Observar las normas de seguridad vial, el funcionamiento de los servicios públicos y las interacciones sociales en diferentes contextos.",
+            "Visitas a la biblioteca, el centro de salud, el supermercado o otros espacios públicos para familiarizarse con el entorno social y realizar actividades prácticas como pedir información, realizar una compra o interactuar con personas del entorno. Se utilizará un guion con las indicaciones de la actividad para facilitar la comprensión.",
           evaluacion:
-            "Observación directa del comportamiento, cuadernos de campo para registrar observaciones y lista de verificación para evaluar la participación en las salidas.",
+            "Observación directa de la participación en las actividades, registros anecdóticos de las interacciones con otras personas y la adaptación al entorno social.",
         },
         {
-          nombre: "Simulación de Compra en un Supermercado",
+          nombre: "Juegos cooperativos",
           descripcion:
-            "Crear un espacio simulado de supermercado con productos y precios.  Practicar la selección de productos, el pago con dinero ficticio y la gestión del presupuesto.",
+            "Se realizarán juegos cooperativos que fomenten la colaboración, la comunicación y la resolución de problemas en grupo, como juegos de mesa, actividades de construcción o juegos de rol con temática social.",
           evaluacion:
-            "Observación directa del desempeño, lista de verificación para evaluar la realización de la compra y registros anecdóticos de las dificultades encontradas.",
-        },
-        {
-          nombre: "Educación Vial",
-          descripcion:
-            "Utilizar materiales visuales (vídeos, imágenes, mapas) para explicar las normas de seguridad vial básicas.  Simular situaciones de tránsito con juegos de roles y señalización.",
-          evaluacion:
-            "Observación directa de la comprensión de las normas, lista de verificación para evaluar la seguridad vial en diferentes situaciones y registros anecdóticos de las dificultades encontradas.",
+            "Observación directa de la participación en los juegos, registros anecdóticos de las interacciones con los compañeros, la actitud colaborativa y la resolución de problemas en equipo.",
         },
       ],
-      evaluacion_general:
-        "Observación directa, cuadernos de campo, listas de verificación, autoevaluación con apoyo visual.",
     },
     {
       ambito: "Habilidades y Destrezas Laborales",
-      horas: "7-10",
+      horas: "9",
       contenidos:
-        "Ejecución de tareas laborales sencillas, responsabilidad, autonomía, gestión de recursos, trabajo en entornos reales.",
+        "Conocimiento de diferentes tipos de trabajos, habilidades para el trabajo en equipo,  manejo de herramientas básicas,  organización del trabajo,  resolución de problemas en el ámbito laboral,  orientación laboral.",
       actividades: [
         {
-          nombre: "Taller de Cocina",
+          nombre: "Simulación de tareas de oficina",
           descripcion:
-            "Preparar recetas sencillas con la ayuda de un adulto.  Seguir instrucciones escritas y visuales.  Organizar y limpiar el espacio de trabajo.  Aprender sobre la seguridad alimentaria y la higiene en la cocina.",
+            "Se utilizarán herramientas informáticas básicas para realizar tareas como organizar archivos, escribir correos electrónicos, realizar cálculos simples o elaborar presentaciones. Se trabajarán las habilidades de organización, atención, precisión y manejo de herramientas digitales.",
           evaluacion:
-            "Observación directa del desempeño, lista de verificación para evaluar la ejecución de las tareas y evaluación del producto final (platillo preparado).",
+            "Observación directa de la participación en las actividades, listas de verificación de las tareas realizadas y registros anecdóticos de la evolución en el uso de las herramientas informáticas y la resolución de problemas.",
         },
         {
-          nombre: "Labores Domésticas",
+          nombre: "Taller de gestión de recursos",
           descripcion:
-            "Participar en las tareas domésticas sencillas como ordenar su habitación, barrer o poner la mesa.  Realizar actividades de mantenimiento básico como regar las plantas o lavar la ropa.",
+            "Se realizarán actividades para desarrollar habilidades de gestión de recursos, como planificación de tareas, organización del espacio de trabajo, control del tiempo y gestión de materiales. Se utilizarán ejemplos prácticos y simulaciones de situaciones reales.",
           evaluacion:
-            "Observación directa del desempeño, lista de verificación para evaluar la realización de las tareas y registro anecdótico de la autonomía en la gestión de las tareas.",
+            "Observación directa de la participación en las actividades, listas de verificación de las tareas realizadas y registros anecdóticos de la evolución en la planificación, organización y gestión de recursos.",
         },
         {
-          nombre: "Simulación de Tareas de Oficina",
+          nombre: "Prácticas en entornos reales",
           descripcion:
-            "Utilizar programas informáticos sencillos para crear documentos o presentaciones.  Realizar tareas de organización de archivos y gestión de información.  Atender el teléfono y tomar mensajes.",
+            "Colaboración con empresas o entidades para realizar prácticas en entornos reales, como la participación en tareas de apoyo a la gestión, atención al cliente o trabajo en equipo. Se trabajarán las habilidades de adaptación al entorno laboral,  la interacción con personas del entorno laboral y la aplicación de las habilidades aprendidas en situaciones reales.",
           evaluacion:
-            "Observación directa del desempeño, lista de verificación para evaluar la realización de las tareas y evaluación del producto final (documentos, archivos, mensajes).",
+            "Observación directa de la participación en las prácticas,  registros anecdóticos de la adaptación al entorno laboral,  la interacción con compañeros y la aplicación de las habilidades aprendidas.",
+        },
+        {
+          nombre: "Orientación laboral",
+          descripcion:
+            "Talleres de información sobre el mercado laboral,  tipos de profesiones,  procesos de búsqueda de empleo y orientación para la elaboración de un currículum vitae y una carta de presentación. Se utilizarán herramientas digitales para facilitar la búsqueda de información.",
+          evaluacion:
+            "Observación directa de la participación en los talleres, listas de verificación de las tareas realizadas y registros anecdóticos de la comprensión de la información sobre el mercado laboral y la elaboración de un currículum vitae y una carta de presentación.",
         },
       ],
-      evaluacion_general:
-        "Observación directa, listas de verificación, autoevaluación, evaluación del producto final.",
     },
   ],
 };

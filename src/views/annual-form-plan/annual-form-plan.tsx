@@ -14,7 +14,7 @@ const AnnualFormPlan = () => {
     return (
       <LoadingView
         title="Por favor, espere..."
-        message="Generando programación anual invidualizada..."
+        message="Generando programación anual individualizado..."
       />
     );
   }
@@ -22,7 +22,7 @@ const AnnualFormPlan = () => {
   return (
     <div className="w-full xl:w-1/2 flex flex-col">
       <Form
-        title="Programación Anual Individualizada"
+        title="Programación Anual Individualizado"
         control={control}
         reset={reset}
         handleSubmit={handleSubmit}
