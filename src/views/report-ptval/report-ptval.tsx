@@ -20,7 +20,7 @@ const PTVALReport = () => {
         onClickNavigateBack={() => router.push("/")}
         isVisibleButtons
       />
-      <div className="w-full flex flex-col md:flex-row print:flex-row gap-2">
+      <div className="w-full flex flex-col md:flex-row print:flex-row gap-4">
         <PTVALStudentData content={content?.ptval?.alumno ?? null} />
         <PTVALPlanData data={content?.ptval?.plan ?? []} />
       </div>

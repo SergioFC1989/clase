@@ -18,7 +18,7 @@ const PTVALPlanData = ({ data }: PTVALPlanDataProps) => {
   if (!data.length) return null;
 
   return (
-    <div className="w-full flex flex-col px-3 gap-8">
+    <div className="w-full flex flex-col py-3 gap-8">
       {data.map((info, index) => (
         <div
           key={index}

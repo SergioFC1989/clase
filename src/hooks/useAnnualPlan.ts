@@ -41,7 +41,7 @@ export const useAnnualPlan = () => {
             ...prev,
             ptval: serializedResponse,
           }));
-          return router.push("/report-ptval");
+          return router.push("/report/ptval");
         }
       } catch (error) {
         console.error(error);
