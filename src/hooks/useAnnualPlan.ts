@@ -5,7 +5,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { AnnualPlanDefaultValues } from "../views/annual-form-plan/data";
 
 import { useAppContext } from "@/context/app-context";
-import { generatePTVALSinglePlan } from "@/prompts/ptval-single-plan";
+import { generateSinglePlanPTVAL } from "@/prompts/single-plan/single-plan-ptval";
 import { apiRequest } from "@/services/api";
 import { sanitizerJSON } from "@/utils/sanitizers";
 
@@ -26,7 +26,7 @@ export const useAnnualPlan = () => {
           "/api/gemini/generate-content-text",
           "POST",
           {
-            prompt: generatePTVALSinglePlan(data),
+            prompt: generateSinglePlanPTVAL(data),
           }
         );
 

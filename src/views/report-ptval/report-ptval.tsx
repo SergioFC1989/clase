@@ -13,6 +13,10 @@ const PTVALReport = () => {
   const router = useRouter();
   const { content } = useAnnualPlan();
 
+  if (!content) {
+    return router.push("/");
+  }
+
   return (
     <section>
       <TitleNav
