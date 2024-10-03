@@ -14,7 +14,8 @@ const PTVALReport = () => {
   const { content } = useAnnualPlan();
 
   if (!content) {
-    return router.push("/");
+    router.push("/");
+    return null;
   }
 
   return (
