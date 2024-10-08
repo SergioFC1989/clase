@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useAnnualPlan } from "@/hooks/useAnnualPlan";
 
-import TitleNav from "@/components/title-nav/title-nav";
+import PageHeader from "@/components/page-header/page-header";
 
 import PTVALPlanData from "./components/ptval-plan-data";
 import PTVALStudentData from "./components/ptval-student-data";
@@ -20,7 +20,7 @@ const PTVALReport = () => {
 
   return (
     <section>
-      <TitleNav
+      <PageHeader
         title="Informe Programación Anual PTVAL"
         onClickNavigateBack={() => router.push("/")}
         isVisibleButtons
