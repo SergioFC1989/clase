@@ -5,20 +5,6 @@ import { createTheme, ThemeProvider } from "@fluentui/react";
 import { ReactNode, useEffect, useState } from "react";
 
 const myTheme = createTheme({
-  fonts: {
-    tiny: {
-      fontFamily: "Montserrat, sans-serif",
-    },
-    small: {
-      fontFamily: "Montserrat, sans-serif",
-    },
-    medium: {
-      fontFamily: "Montserrat, sans-serif",
-    },
-    large: {
-      fontFamily: "Montserrat, sans-serif",
-    },
-  },
   palette: {
     themePrimary: "#28a88f",
     themeLighterAlt: "#f4fcfa",
