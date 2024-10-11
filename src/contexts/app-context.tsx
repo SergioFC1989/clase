@@ -8,7 +8,6 @@ import React, {
 } from "react";
 
 import { SingleAnnualPlanProps } from "@/modules/annual-plan/types";
-import { mockedResponseAnnualPTVALPlan } from "@/utils/mocks";
 
 interface AppContextProps {
   singleAnnualPlan: SingleAnnualPlanProps | null;
@@ -21,9 +20,7 @@ const AppContext = createContext<AppContextProps | undefined>(undefined);
 
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [singleAnnualPlan, setSingleAnnualPlan] =
-    useState<SingleAnnualPlanProps | null>({
-      ptval: mockedResponseAnnualPTVALPlan,
-    });
+    useState<SingleAnnualPlanProps | null>(null);
 
   const values = useMemo(
     () => ({ singleAnnualPlan, setSingleAnnualPlan }),
