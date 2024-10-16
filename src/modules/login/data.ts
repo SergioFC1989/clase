@@ -2,7 +2,7 @@ import { FormFieldsProps } from "@/lib/types";
 
 export const LoginFormFields: FormFieldsProps[] = [
   {
-    type: "text",
+    type: "email",
     label: "Correo electrónico",
     name: "email",
     placeholder: "Introduzca un correo electrónico...",

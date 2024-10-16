@@ -1,6 +1,6 @@
 import { FormFieldsProps } from "@/lib/types";
 
-export const SignUpFormFields: FormFieldsProps[] = [
+export const signUpFormConfig: FormFieldsProps[] = [
   {
     type: "text",
     label: "Nombre",

@@ -5,10 +5,13 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 import Form from "@/components/Form";
-import { SignUpFormFields } from "./data";
+
+import { signUpFormConfig } from "./form/sign-up-form-config";
+import { useSignUp } from "./hooks/useSignUp";
 
 const SignUp = () => {
   const { handleSubmit, control } = useForm();
+  const { handleSignUp } = useSignUp();
 
   return (
     <div className="w-full flex flex-col items-center px-30%">
@@ -24,9 +27,9 @@ const SignUp = () => {
       <Form
         handleSubmit={handleSubmit}
         control={control}
-        listFields={SignUpFormFields}
+        listFields={signUpFormConfig}
         labelButtonSubmit="Crear cuenta"
-        onSubmit={(data) => console.log(data)}
+        onSubmit={handleSignUp}
       />
     </div>
   );

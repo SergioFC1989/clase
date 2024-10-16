@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Main from "./main";
 
-import { MongoDb } from "@/services/mongo-db";
+import { MongoDb } from "@/services/mongodb/mongodb-service";
 
 export const metadata: Metadata = {
   title: "Aula Diversa",

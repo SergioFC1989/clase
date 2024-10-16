@@ -1,7 +1,8 @@
 "use server";
 
-import { generateAIResponse } from "@/services/api";
 import { NextApiRequest, NextApiResponse } from "next";
+
+import { generateAIResponse } from "@/services/google-ai-client/google-ai-services";
 
 const fetchAIResponse = async (req: NextApiRequest, res: NextApiResponse) => {
   const { prompt } = req.body;

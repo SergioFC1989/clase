@@ -19,7 +19,7 @@ interface FormProps {
   control: Control<FieldValues>;
   listFields: FormFieldsProps[];
   labelButtonSubmit: string;
-  labelButtonReset: string;
+  labelButtonReset?: string;
 }
 
 const groupByCol = (data: FormFieldsProps[]) => {

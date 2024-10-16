@@ -3,7 +3,7 @@ import { useCallback, useMemo, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
 import { useAppContext } from "@/contexts/app-context";
-import { apiRequest } from "@/services/api";
+import { apiRequest } from "@/utils/utils";
 import { sanitizerJSON } from "@/utils/utils";
 
 import { annualPlanFormDefault } from "../form/annual-plan-form-default";
@@ -24,7 +24,7 @@ export const useAnnualPlan = () => {
       setIsLoading(true);
       try {
         const response = await apiRequest(
-          "/api/generate-content-text",
+          "/api/ai/generate-content-text",
           "POST",
           {
             prompt: createSinglePlanPTVAL(data),
