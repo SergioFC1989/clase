@@ -2,7 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { generateAIResponse } from "@/services/google-ai-client/google-ai-services";
+import { generateAIResponse } from "@/services/google-ai/google-ai-services";
 
 const fetchAIResponse = async (req: NextApiRequest, res: NextApiResponse) => {
   const { prompt } = req.body;

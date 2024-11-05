@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Main from "./main";
 
-import { MongoDb } from "@/services/mongodb/mongodb-service";
+import { MongoDbService } from "@/services/mongodb/mongodb-service";
 
 export const metadata: Metadata = {
   title: "Aula Diversa",
@@ -17,7 +17,7 @@ const RootLayout = async ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  MongoDb.connect();
+  MongoDbService.connect();
 
   return (
     <html lang="es">

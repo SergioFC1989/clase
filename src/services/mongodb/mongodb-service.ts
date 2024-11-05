@@ -1,15 +1,19 @@
 import { Collection, Db } from "mongodb";
 import client from "./mongodb-client";
 
-export class MongoDb {
+export class MongoDbService {
   private static dbName: string = "aula_diversa";
   private static isConnected = false;
 
   // Connect to the database if needed
-  private static async connect() {
+  public static async connect() {
     if (!this.isConnected) {
-      await client.connect();
-      this.isConnected = true;
+      try {
+        await client.connect();
+        this.isConnected = true;
+      } catch (error) {
+        console.error("Error al conectar con la base de datos:", error);
+      }
     }
   }
 
