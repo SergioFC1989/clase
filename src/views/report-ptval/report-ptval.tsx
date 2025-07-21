@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 
-import TitleNav from "@/components/title-nav/title-nav";
-import { useAnnualPlan } from "@/hooks/useAnnualPlan";
+import TitleNav from "@/lib/components/title-nav/title-nav";
+import { useAnnualPlan } from "@/lib/hooks/useAnnualPlan";
 
 import PTVALPlanData from "./components/ptval-plan-data";
 import PTVALStudentData from "./components/ptval-student-data";

@@ -38,21 +38,21 @@
     "semi": ["error", "always"],
     "no-unused-vars": "error",
     "no-console": "warn"
-  }
-  // "overrides": [
-  //   {
-  //     "files": ["**/*.d.ts", "**/*.type.ts"],
-  //     "rules": {
-  //       "no-unused-vars": "off",
-  //       "no-console": "off"
-  //     }
-  //   },
-  //   {
-  //     "files": ["**/*.test.ts", "**/*.test.tsx"],
-  //     "rules": {
-  //       "no-undef": "off",
-  //       "@typescript-eslint/no-undef": "off"
-  //     }
-  //   }
-  // ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.d.ts", "**/*.type.ts"],
+      "rules": {
+        "no-unused-vars": "off",
+        "no-console": "off"
+      }
+    },
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      "rules": {
+        "no-undef": "off",
+        "@typescript-eslint/no-undef": "off"
+      }
+    }
+  ]
 }

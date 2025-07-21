@@ -1,15 +1,15 @@
-import { TextField } from "@fluentui/react";
+import { TextField as FTextField } from "@fluentui/react";
 import { Controller } from "react-hook-form";
 
-import { FormFieldsProps } from "@/utils/types";
+import { IDynamicFormField } from "@/utils/types";
 
-const InputTextField = ({ label, placeholder, name, required = false, control, isMultiline = false, rows, ...props }: FormFieldsProps) => (
+const TextField = ({ label, placeholder, name, required = false, control, isMultiline = false, rows, ...props }: IDynamicFormField) => (
   <Controller
     name={name}
     control={control}
     rules={{ required }}
     render={({ field: { onChange, onBlur, value } }) => (
-      <TextField
+      <FTextField
         className="w-full"
         label={label}
         placeholder={placeholder}
@@ -25,4 +25,4 @@ const InputTextField = ({ label, placeholder, name, required = false, control, i
   />
 );
 
-export default InputTextField;
+export default TextField;

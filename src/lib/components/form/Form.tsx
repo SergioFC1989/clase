@@ -1,47 +1,20 @@
-/* eslint-disable no-unused-vars */
 import { DefaultButton, PrimaryButton } from "@fluentui/react";
-import { Control, FieldValues } from "react-hook-form";
 
-import { FormFieldsProps } from "@/utils/types";
+import { IDynamicFormField } from "@/utils/types";
 
+import Dropdown from "../dropdown/Dropdown";
+import Slider from "../slider/Slider";
+import TextField from "../text-field/text-field";
 import TitleNav from "../title-nav/title-nav";
-import InputDropdown from "./input-dropdown/input-dropdown";
-import InputSlider from "./input-slider/input-slider";
-import InputTextField from "./input-text-field/input-text-field";
+import { IForm } from "./types/form.type";
+import { groupByColForm } from "./utils/form.util";
 
-interface FormProps {
-  title?: string;
-  handleSubmit: (callback: (data: FieldValues) => void) => (e?: React.BaseSyntheticEvent) => Promise<void>;
-  onSubmit: (data: FieldValues) => Promise<void>;
-  reset?: () => void;
-  control: Control<FieldValues>;
-  listFields: FormFieldsProps[];
-  labelButtonSubmit: string;
-  labelButtonReset: string;
-}
-
-const groupByCol = (data: FormFieldsProps[]) => {
-  return data.reduce(
-    (acc, field) => {
-      const col = field.col;
-      if (col !== undefined && !acc[col]) {
-        acc[col] = [];
-      }
-      if (col !== undefined) {
-        acc[col].push(field);
-      }
-      return acc;
-    },
-    {} as { [key: number]: typeof data },
-  );
-};
-
-const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], labelButtonSubmit, labelButtonReset }: FormProps) => {
-  const groupedFields: { [key: string]: FormFieldsProps[] } = groupByCol(listFields);
+const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], labelButtonSubmit, labelButtonReset }: IForm) => {
+  const groupedFields: { [key: string]: IDynamicFormField[] } = groupByColForm(listFields);
 
   return (
     <>
-      <TitleNav title={title} />
+      {title && <TitleNav title={title} />}
       <form
         className="w-full flex flex-col gap-4"
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
@@ -53,7 +26,7 @@ const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], 
             {groupedFields[col].map((field) => (
               <div className="w-full flex flex-col s:flex-row" key={field.name}>
                 {field.type === "text" && (
-                  <InputTextField
+                  <TextField
                     label={field.label}
                     placeholder={field.placeholder}
                     name={field.name}
@@ -64,10 +37,10 @@ const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], 
                   />
                 )}
                 {field.type === "slider" && (
-                  <InputSlider label={field.label} name={field.name} control={control} min={field.min} max={field.max} step={field.step} />
+                  <Slider label={field.label} name={field.name} control={control} min={field.min} max={field.max} step={field.step} />
                 )}
                 {field.type === "dropdown" && (
-                  <InputDropdown
+                  <Dropdown
                     label={field.label}
                     name={field.name}
                     control={control}

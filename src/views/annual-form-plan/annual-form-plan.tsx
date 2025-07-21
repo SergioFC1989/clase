@@ -1,8 +1,8 @@
 "use client";
 
-import Form from "@/components/form/form";
-import LoadingView from "@/components/loading-view/loading-view";
-import { useAnnualPlan } from "@/hooks/useAnnualPlan";
+import Form from "@/lib/components/form/Form";
+import LoadingView from "@/lib/components/loading-view/loading-view";
+import { useAnnualPlan } from "@/lib/hooks/useAnnualPlan";
 
 import { AnualPlanFormFields } from "./data";
 

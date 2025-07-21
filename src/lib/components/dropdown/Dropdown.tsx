@@ -1,9 +1,9 @@
-import { Dropdown } from "@fluentui/react";
+import { Dropdown as FDropdown } from "@fluentui/react";
 import { Controller } from "react-hook-form";
 
-import { FormFieldsProps } from "@/utils/types";
+import { IDynamicFormField } from "@/utils/types";
 
-const InputDropdown = ({
+const Dropdown = ({
   name = "",
   label = "",
   control,
@@ -12,13 +12,13 @@ const InputDropdown = ({
   options = [],
   isMultiSelect = false,
   ...props
-}: FormFieldsProps) => (
+}: IDynamicFormField) => (
   <Controller
     control={control}
     name={name}
     rules={{ required }}
     render={({ field: { onChange, onBlur, value } }) => (
-      <Dropdown
+      <FDropdown
         label={label}
         className="w-full"
         onBlur={onBlur}
@@ -39,4 +39,4 @@ const InputDropdown = ({
   />
 );
 
-export default InputDropdown;
+export default Dropdown;
