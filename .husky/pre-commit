@@ -2,6 +2,9 @@ echo " ----------------------------------------"
 echo "| RUNNING HUSKY PRE-COMMIT HOOK FRONTEND |"
 echo " ----------------------------------------"
 
+echo "🧹 Deleting .next folder"
+rm -rf .next
+
 echo ""
 echo "🚀 Running npm run build"
 if ! npm run build; then
