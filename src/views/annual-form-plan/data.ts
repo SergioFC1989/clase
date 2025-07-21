@@ -1,9 +1,4 @@
-import {
-  defaultDisorderOptions,
-  defaultEducationalStageOptions,
-  defaultLevelOptions,
-  defaultModalityOptions,
-} from "@/utils/options";
+import { defaultDisorderOptions, defaultEducationalStageOptions, defaultLevelOptions, defaultModalityOptions } from "@/utils/options";
 import { AnnualPlanProps, FormFieldsProps } from "@/utils/types";
 
 export const AnualPlanFormFields: FormFieldsProps[] = [

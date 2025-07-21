@@ -3,16 +3,7 @@ import { Controller } from "react-hook-form";
 
 import { FormFieldsProps } from "@/utils/types";
 
-const InputSlider = ({
-  label,
-  name = "",
-  required = false,
-  control,
-  min,
-  max,
-  step,
-  ...props
-}: FormFieldsProps) => (
+const InputSlider = ({ label, name = "", required = false, control, min, max, step, ...props }: FormFieldsProps) => (
   <Controller
     control={control}
     name={name}

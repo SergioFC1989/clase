@@ -23,15 +23,9 @@ const InputDropdown = ({
         className="w-full"
         onBlur={onBlur}
         onChange={(_, option) =>
-          !isMultiSelect
-            ? onChange(option?.key)
-            : option?.selected
-            ? onChange([...(Array.isArray(value) ? value : []), option?.text])
-            : onChange(
-                (Array.isArray(value) ? value : []).filter(
-                  (v) => v !== option?.text
-                )
-              )
+          !isMultiSelect ? onChange(option?.key)
+          : option?.selected ? onChange([...(Array.isArray(value) ? value : []), option?.text])
+          : onChange((Array.isArray(value) ? value : []).filter((v) => v !== option?.text))
         }
         selectedKey={!isMultiSelect ? value : undefined}
         selectedKeys={isMultiSelect ? value : undefined}

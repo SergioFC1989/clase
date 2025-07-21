@@ -2,7 +2,6 @@
 
 import Form from "@/components/form/form";
 import LoadingView from "@/components/loading-view/loading-view";
-
 import { useAnnualPlan } from "@/hooks/useAnnualPlan";
 
 import { AnualPlanFormFields } from "./data";
@@ -11,12 +10,7 @@ const AnnualFormPlan = () => {
   const { handleSubmit, control, reset, onSubmit, isLoading } = useAnnualPlan();
 
   if (isLoading) {
-    return (
-      <LoadingView
-        title="Por favor, espere..."
-        message="Generando programación anual individualizado..."
-      />
-    );
+    return <LoadingView title="Por favor, espere..." message="Generando programación anual individualizado..." />;
   }
 
   return (

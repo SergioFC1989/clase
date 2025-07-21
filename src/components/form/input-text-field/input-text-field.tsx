@@ -3,16 +3,7 @@ import { Controller } from "react-hook-form";
 
 import { FormFieldsProps } from "@/utils/types";
 
-const InputTextField = ({
-  label,
-  placeholder,
-  name,
-  required = false,
-  control,
-  isMultiline = false,
-  rows,
-  ...props
-}: FormFieldsProps) => (
+const InputTextField = ({ label, placeholder, name, required = false, control, isMultiline = false, rows, ...props }: FormFieldsProps) => (
   <Controller
     name={name}
     control={control}
