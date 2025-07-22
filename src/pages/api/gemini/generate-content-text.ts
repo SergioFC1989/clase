@@ -2,7 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { apiGenerateContentText } from "@/services/api";
+import { apiGenerateContentText } from "@/lib/services/api";
 
 const generateContentText = async (req: NextApiRequest, res: NextApiResponse) => {
   const { prompt } = req.body;

@@ -1,7 +1,7 @@
 import { Slider as FSlider } from "@fluentui/react";
 import { Controller } from "react-hook-form";
 
-import { IDynamicFormField } from "@/utils/types";
+import { IDynamicFormField } from "@/lib/types/type";
 
 const Slider = ({ label, name = "", required = false, control, min, max, step, ...props }: IDynamicFormField) => (
   <Controller

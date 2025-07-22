@@ -1,12 +1,8 @@
 import { IconButton, Separator, Text } from "@fluentui/react";
 
-interface TitleNavProps {
-  title?: string;
-  isVisibleButtons?: boolean;
-  onClickNavigateBack?: () => void;
-}
+import { ITitleNav } from "./types/title-nav.type";
 
-const TitleNav = ({ title, isVisibleButtons = false, onClickNavigateBack }: TitleNavProps) => (
+const TitleNav = ({ title, isVisibleButtons = false, onClickNavigateBack }: ITitleNav) => (
   <>
     <div className="w-full flex flex-col s:flex-row s:justify-between s:items-center">
       <Text variant="xLarge" className="text-base sm:text-lg">

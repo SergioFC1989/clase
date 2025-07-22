@@ -3,10 +3,10 @@ import { useCallback, useMemo, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
 import { useAppContext } from "@/lib/context/app-context";
-import { generatePTVALSinglePlan } from "@/prompts/ptval-single-plan";
-import { apiRequest } from "@/services/api";
-import { sanitizerJSON } from "@/utils/sanitizers";
-import { AnnualPlanDefaultValues } from "@/views/annual-form-plan/data";
+import { generatePTVALSinglePlan } from "@/lib/prompts/ptval-single-plan";
+import { apiRequest } from "@/lib/services/api";
+import { sanitizerJSON } from "@/lib/utils/util";
+import { AnnualPlanDefaultValues } from "@/modules/annual-form-plan/data";
 
 export const useAnnualPlan = () => {
   const router = useRouter();

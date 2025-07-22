@@ -1,7 +1,7 @@
 import { Dropdown as FDropdown } from "@fluentui/react";
 import { Controller } from "react-hook-form";
 
-import { IDynamicFormField } from "@/utils/types";
+import { IDynamicFormField } from "@/lib/types/type";
 
 const Dropdown = ({
   name = "",

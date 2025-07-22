@@ -1,11 +1,8 @@
 import { Separator, Spinner, Text } from "@fluentui/react";
 
-interface LoadingViewProps {
-  title: string;
-  message: string;
-}
+import { ILoadingView } from "./types/loading-view.type";
 
-const LoadingView = ({ title, message }: LoadingViewProps) => (
+const LoadingView = ({ title, message }: ILoadingView) => (
   <>
     <Text variant="xLarge" className="text-base sm:text-lg">
       {title}

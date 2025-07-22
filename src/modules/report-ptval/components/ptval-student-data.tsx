@@ -1,7 +1,7 @@
 import { Separator, Text } from "@fluentui/react";
 
-import Tag from "@/lib/components/tag/tag";
-import { AnnualPlanProps } from "@/utils/types";
+import Tag from "@/lib/components/tag/Tag";
+import { AnnualPlanProps } from "@/lib/types/type";
 
 interface PTVALStudentDataProps {
   content: AnnualPlanProps | null;

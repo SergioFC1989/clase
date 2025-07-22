@@ -1,4 +1,4 @@
-import ReportPTVAL from "@/views/report-ptval/report-ptval";
+import ReportPTVAL from "@/modules/report-ptval/report-ptval";
 
 const ReportPTVALPage = () => <ReportPTVAL />;
 

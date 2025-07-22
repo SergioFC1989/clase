@@ -1,11 +1,11 @@
 import { DefaultButton, PrimaryButton } from "@fluentui/react";
 
-import { IDynamicFormField } from "@/utils/types";
+import { IDynamicFormField } from "@/lib/types/type";
 
 import Dropdown from "../dropdown/Dropdown";
 import Slider from "../slider/Slider";
-import TextField from "../text-field/text-field";
-import TitleNav from "../title-nav/title-nav";
+import TextField from "../text-field/TextField";
+import TitleNav from "../title-nav/TitleNav";
 import { IForm } from "./types/form.type";
 import { groupByColForm } from "./utils/form.util";
 

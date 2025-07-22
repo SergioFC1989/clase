@@ -1,6 +1,6 @@
 import { FieldValues, UseFormReturn } from "react-hook-form";
 
-import { IDynamicFormField } from "@/utils/types";
+import { IDynamicFormField } from "@/lib/types/type";
 
 export interface IForm extends Pick<UseFormReturn, "control" | "handleSubmit" | "reset"> {
   labelButtonReset: string;

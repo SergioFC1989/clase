@@ -1,4 +1,4 @@
-import { IDynamicFormField } from "@/utils/types";
+import { IDynamicFormField } from "@/lib/types/type";
 
 export const groupByColForm = (data: IDynamicFormField[]) => {
   return data.reduce(

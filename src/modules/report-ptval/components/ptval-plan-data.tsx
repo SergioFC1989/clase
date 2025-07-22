@@ -1,6 +1,6 @@
 import { Separator, Text } from "@fluentui/react";
 
-import { PlanDataProps } from "@/utils/types";
+import { PlanDataProps } from "@/lib/types/type";
 
 interface PTVALPlanDataProps {
   data: PlanDataProps[];

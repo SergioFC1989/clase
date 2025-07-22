@@ -1,6 +1,6 @@
 import React, { createContext, FC, ReactNode, useContext, useMemo, useState } from "react";
 
-import { ResponseAnnualPlanProps } from "@/utils/types";
+import { ResponseAnnualPlanProps } from "@/lib/types/type";
 
 interface AppContextProps {
   content: ResponseAnnualPlanProps | null;

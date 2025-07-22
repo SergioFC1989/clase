@@ -1,5 +1,5 @@
-import { defaultDisorderOptions, defaultEducationalStageOptions, defaultLevelOptions, defaultModalityOptions } from "@/utils/options";
-import { AnnualPlanProps, IDynamicFormField } from "@/utils/types";
+import { AnnualPlanProps, IDynamicFormField } from "@/lib/types/type";
+import { defaultDisorderOptions, defaultEducationalStageOptions, defaultLevelOptions, defaultModalityOptions } from "@/lib/utils/options";
 
 export const AnualPlanFormFields: IDynamicFormField[] = [
   {

@@ -1,4 +1,4 @@
-import { AnnualPlanProps } from "../utils/types";
+import { AnnualPlanProps } from "../types/type";
 
 export const generatePTVALSinglePlan = (data: AnnualPlanProps) => `
 Crea un plan detallado para un curso escolar en el año corriente en Andalucía, dirigido a un alumno determinado con necesidades educativas especiales, basado en los tres ámbitos de desarrollo según la Orden del 19 de octubre de 2002 de la Junta de Andalucía, para la transición a la vida adulta laboral (PTVAL).
