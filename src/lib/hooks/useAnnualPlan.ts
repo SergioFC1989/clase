@@ -2,9 +2,9 @@ import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
+import { apiRequest } from "@/lib/api/requests/api.request";
 import { useAppContext } from "@/lib/context/app-context";
 import { generatePTVALSinglePlan } from "@/lib/prompts/ptval-single-plan";
-import { apiRequest } from "@/lib/services/api";
 import { sanitizerJSON } from "@/lib/utils/util";
 import { AnnualPlanDefaultValues } from "@/modules/annual-form-plan/data";
 
@@ -21,8 +21,10 @@ export const useAnnualPlan = () => {
     async (data: FieldValues) => {
       setIsLoading(true);
       try {
-        const response = await apiRequest("/api/gemini/generate-content-text", "POST", {
-          prompt: generatePTVALSinglePlan(data),
+        const response = await apiRequest({
+          url: "/api/gemini/generate-content-text",
+          method: "POST",
+          body: { prompt: generatePTVALSinglePlan(data) },
         });
 
         const serializedResponse = {
