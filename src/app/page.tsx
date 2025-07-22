@@ -1,5 +1,6 @@
-import AnnualFormPlan from "@/modules/annual-form-plan/annual-form-plan";
+import AnnualPlan from "@/modules/annual-plan/AnnualPlan";
 
-const HomePage = () => <AnnualFormPlan />;
+// this is temporary, we will use the Home component directly
+const HomePage = () => <AnnualPlan />;
 
 export default HomePage;

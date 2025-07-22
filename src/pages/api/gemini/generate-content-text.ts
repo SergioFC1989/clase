@@ -1,5 +1,4 @@
 "use server";
-
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { geminiRequest } from "@/lib/api/requests/gemini.request";

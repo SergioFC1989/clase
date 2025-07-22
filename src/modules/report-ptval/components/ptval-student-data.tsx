@@ -1,10 +1,10 @@
 import { Separator, Text } from "@fluentui/react";
 
 import Tag from "@/lib/components/tag/Tag";
-import { AnnualPlanProps } from "@/lib/types/type";
+import { IAnnualPlanValues } from "@/modules/annual-plan/types/annual-plan.type";
 
 interface PTVALStudentDataProps {
-  content: AnnualPlanProps | null;
+  content: IAnnualPlanValues | null;
 }
 
 const renderLabelWithDescription = (label: string, description?: string) => (

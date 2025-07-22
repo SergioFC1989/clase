@@ -1,13 +1,12 @@
 "use client";
-
 import Form from "@/lib/components/form/Form";
 import LoadingView from "@/lib/components/loading-view/LoadingView";
-import { useAnnualPlan } from "@/lib/hooks/useAnnualPlan";
 
-import { AnualPlanFormFields } from "./data";
+import { anualFormPlanFields } from "./fields/annual-plan.fields";
+import { useAnnualPlan } from "./hooks/useAnnualPlan";
 
-const AnnualFormPlan = () => {
-  const { handleSubmit, control, reset, onSubmit, isLoading } = useAnnualPlan();
+const AnnualPlan = () => {
+  const { handleSubmit, control, reset, handleSubmitAnnualPlan, isLoading } = useAnnualPlan();
 
   if (isLoading) {
     return <LoadingView title="Por favor, espere..." message="Generando programación anual individualizado..." />;
@@ -20,8 +19,8 @@ const AnnualFormPlan = () => {
         control={control}
         reset={reset}
         handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
-        listFields={AnualPlanFormFields}
+        onSubmit={handleSubmitAnnualPlan}
+        listFields={anualFormPlanFields}
         labelButtonSubmit="Aceptar"
         labelButtonReset="Limpiar"
       />
@@ -29,4 +28,4 @@ const AnnualFormPlan = () => {
   );
 };
 
-export default AnnualFormPlan;
+export default AnnualPlan;

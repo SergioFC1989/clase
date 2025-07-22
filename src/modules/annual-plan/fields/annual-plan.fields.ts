@@ -1,7 +1,7 @@
-import { AnnualPlanProps, IDynamicFormField } from "@/lib/types/type";
+import { IDynamicFormField } from "@/lib/types/type";
 import { defaultDisorderOptions, defaultEducationalStageOptions, defaultLevelOptions, defaultModalityOptions } from "@/lib/utils/options";
 
-export const AnualPlanFormFields: IDynamicFormField[] = [
+export const anualFormPlanFields: IDynamicFormField[] = [
   {
     type: "dropdown",
     label: "Etapa educativa",
@@ -22,9 +22,9 @@ export const AnualPlanFormFields: IDynamicFormField[] = [
   },
   {
     type: "text",
-    label: "Nombre",
+    label: "Nombre del alumno",
     name: "nombre",
-    placeholder: "Introduzca un nombre...",
+    placeholder: "Introduzca un nombre de alumno...",
     col: 2,
     required: true,
   },
@@ -32,7 +32,7 @@ export const AnualPlanFormFields: IDynamicFormField[] = [
     type: "slider",
     label: "Edad",
     name: "edad",
-    col: 3,
+    col: 2,
     min: 0,
     max: 50,
     step: 1,
@@ -46,6 +46,15 @@ export const AnualPlanFormFields: IDynamicFormField[] = [
     col: 4,
     options: defaultDisorderOptions,
     isMultiSelect: true,
+  },
+  {
+    type: "dropdown",
+    label: "Coeficiente intelectual",
+    name: "coeficiente intelectual",
+    placeholder: "Seleccione una opción...",
+    col: 4,
+    options: defaultLevelOptions,
+    required: true,
   },
   {
     type: "dropdown",
@@ -65,21 +74,13 @@ export const AnualPlanFormFields: IDynamicFormField[] = [
     options: defaultLevelOptions,
     required: true,
   },
-  {
-    type: "dropdown",
-    label: "Coeficiente intelectual",
-    name: "coeficiente intelectual",
-    placeholder: "Seleccione una opción...",
-    col: 6,
-    options: defaultLevelOptions,
-    required: true,
-  },
+
   {
     type: "dropdown",
     label: "Comunicacion escrita",
     name: "comunicacion escrita",
     placeholder: "Seleccione una opción...",
-    col: 7,
+    col: 6,
     options: defaultLevelOptions,
     required: true,
   },
@@ -88,7 +89,7 @@ export const AnualPlanFormFields: IDynamicFormField[] = [
     label: "Comunicacion verbal",
     name: "comunicacion verbal",
     placeholder: "Seleccione una opción...",
-    col: 7,
+    col: 6,
     options: defaultLevelOptions,
     required: true,
   },
@@ -97,7 +98,7 @@ export const AnualPlanFormFields: IDynamicFormField[] = [
     label: "Intencionalidad comunicativa",
     name: "intencionalidad comunicativa",
     placeholder: "Seleccione una opción...",
-    col: 8,
+    col: 7,
     options: defaultLevelOptions,
     required: true,
   },
@@ -106,23 +107,8 @@ export const AnualPlanFormFields: IDynamicFormField[] = [
     label: "Observaciones",
     name: "observaciones",
     placeholder: "Si lo desea, deje sus observaciones...",
-    col: 9,
+    col: 8,
     rows: 5,
     isMultiline: true,
   },
 ];
-
-export const AnnualPlanDefaultValues: AnnualPlanProps = {
-  "etapa educativa": "",
-  modalidad: "",
-  nombre: "",
-  edad: 0,
-  discapacidad: [],
-  "psicomotricidad fina": "",
-  "psicomotricidad gruesa": "",
-  "coeficiente intelectual": "",
-  "comunicacion escrita": "",
-  "comunicacion verbal": "",
-  "intencionalidad comunicativa": "",
-  observaciones: "",
-};

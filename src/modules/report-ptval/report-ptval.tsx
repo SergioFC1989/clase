@@ -1,23 +1,22 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 
 import TitleNav from "@/lib/components/title-nav/TitleNav";
-import { useAnnualPlan } from "@/lib/hooks/useAnnualPlan";
+import { useAppContext } from "@/lib/context/app-context";
 
 import PTVALPlanData from "./components/ptval-plan-data";
 import PTVALStudentData from "./components/ptval-student-data";
 
 const PTVALReport = () => {
   const router = useRouter();
-  const { content } = useAnnualPlan();
+  const { educationPlans } = useAppContext();
 
   return (
     <section>
       <TitleNav title="Informe Programación Anual PTVAL" onClickNavigateBack={() => router.push("/")} isVisibleButtons />
       <div className="w-full flex flex-col md:flex-row print:flex-row gap-2">
-        <PTVALStudentData content={content?.ptval?.alumno ?? null} />
-        <PTVALPlanData data={content?.ptval?.plan ?? []} />
+        <PTVALStudentData content={educationPlans?.ptval?.alumno ?? null} />
+        <PTVALPlanData data={educationPlans?.ptval?.plan ?? []} />
       </div>
     </section>
   );

@@ -18,11 +18,11 @@ const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], 
       <form
         className="w-full flex flex-col gap-4"
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit((onSubmit as unknown as IForm["_onSubmit"]) || (() => {}))}
         onReset={() => reset && reset()}
       >
         {Object.keys(groupedFields).map((col) => (
-          <div key={col} className="w-full flex flex-col s:flex-row gap-2 s:gap-6">
+          <div key={col} className="w-full flex flex-col items-center s:flex-row gap-2 s:gap-6">
             {groupedFields[col].map((field) => (
               <div className="w-full flex flex-col s:flex-row" key={field.name}>
                 {field.type === "text" && (

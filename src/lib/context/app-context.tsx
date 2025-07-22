@@ -3,16 +3,16 @@ import React, { createContext, FC, ReactNode, useContext, useMemo, useState } fr
 import { ResponseAnnualPlanProps } from "@/lib/types/type";
 
 interface AppContextProps {
-  content: ResponseAnnualPlanProps | null;
-  setContent: React.Dispatch<React.SetStateAction<ResponseAnnualPlanProps | null>>;
+  educationPlans: ResponseAnnualPlanProps | null;
+  setEducationPlans: React.Dispatch<React.SetStateAction<ResponseAnnualPlanProps | null>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [content, setContent] = useState<ResponseAnnualPlanProps | null>(null);
+  const [educationPlans, setEducationPlans] = useState<ResponseAnnualPlanProps | null>(null);
 
-  const values = useMemo(() => ({ content, setContent }), [content]);
+  const values = useMemo(() => ({ educationPlans, setEducationPlans }), [educationPlans]);
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
 };

@@ -1,20 +1,7 @@
 import { IDropdownOption } from "@fluentui/react";
 import { UseFormReturn } from "react-hook-form";
 
-export interface AnnualPlanProps {
-  "etapa educativa"?: string;
-  modalidad?: string;
-  nombre?: string;
-  edad?: number;
-  discapacidad?: string[];
-  "psicomotricidad fina"?: string;
-  "psicomotricidad gruesa"?: string;
-  "coeficiente intelectual"?: string;
-  "intencionalidad comunicativa"?: string;
-  "comunicacion escrita"?: string;
-  "comunicacion verbal"?: string;
-  observaciones?: string;
-}
+import { IAnnualPlanValues } from "@/modules/annual-plan/types/annual-plan.type";
 
 export type PlanDataProps = {
   ambito: string;
@@ -28,7 +15,8 @@ export type PlanDataProps = {
 };
 
 export type ReportStudentProps = {
-  alumno: AnnualPlanProps;
+  alumno: IAnnualPlanValues;
+  etapaEducativa: string;
   plan: PlanDataProps[];
 };
 
