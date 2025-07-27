@@ -2,15 +2,6 @@
   "name": "clase",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "format": "prettier --write .",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
-    "prepare": "husky",
-    "start": "next start"
-  },
   "dependencies": {
     "@fluentui/react": "^8.120.9",
     "@google/generative-ai": "^0.19.0",
@@ -39,5 +30,17 @@
     "tailwindcss": "^3.4.13",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0"
+  },
+  "engines": {
+    "node": "22.11.0"
+  },
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "format": "prettier --write .",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "prepare": "husky",
+    "start": "next start"
   }
 }

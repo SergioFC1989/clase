@@ -1,23 +1,13 @@
 import { IDropdownOption } from "@fluentui/react";
 import { UseFormReturn } from "react-hook-form";
 
-import { IAnnualPlanValues } from "@/modules/annual-plan/types/annual-plan.type";
-
-export type PlanDataProps = {
-  ambito: string;
-  horas: string;
-  contenidos: string;
-  actividades: {
-    nombre: string;
-    descripcion: string;
-    evaluacion: string;
-  }[];
-};
+import { IAnnualPlanFormValues } from "@/modules/annual-plan-form/types/annual-plan-form.type";
+import { TScopeSummary } from "@/modules/annual-plan-report/components/summary-data/types/summary-data.type";
 
 export type ReportStudentProps = {
-  alumno: IAnnualPlanValues;
+  alumno: IAnnualPlanFormValues;
   etapaEducativa: string;
-  plan: PlanDataProps[];
+  plan: TScopeSummary[];
 };
 
 export type ResponseAnnualPlanProps = {

@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
-import { FieldValues } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 
 import { apiRequest } from "@/lib/api/requests/api.request";
@@ -8,9 +8,15 @@ import { useAppContext } from "@/lib/context/app-context";
 import { generatePTVALSinglePlan } from "@/lib/prompts/ptval-single-plan";
 import { sanitizerJSON } from "@/lib/utils/util";
 
-export const useAnnualPlanMutation = () => {
+import { annualPlanFormValues } from "../values/annual-plan-form.values";
+
+export const useAnnualPlanForm = () => {
   const router = useRouter();
   const { educationPlans, setEducationPlans } = useAppContext();
+
+  const { handleSubmit, control, reset } = useForm({
+    defaultValues: annualPlanFormValues,
+  });
 
   const handleSubmitAnnualPlan = useMutation({
     mutationFn: async (data: FieldValues) => {
@@ -32,18 +38,21 @@ export const useAnnualPlanMutation = () => {
           ...prev,
           ptval: data,
         }));
-        return router.push("/report-ptval");
+        return router.push("/annual-plan-report");
       }
     },
   });
 
   const values = useMemo(
     () => ({
+      control,
       educationPlans,
+      handleSubmit,
       handleSubmitAnnualPlan: handleSubmitAnnualPlan.mutateAsync,
       isLoading: handleSubmitAnnualPlan.isLoading,
+      reset,
     }),
-    [educationPlans, handleSubmitAnnualPlan.isLoading, handleSubmitAnnualPlan.mutateAsync],
+    [control, educationPlans, handleSubmit, handleSubmitAnnualPlan, reset],
   );
 
   return values;

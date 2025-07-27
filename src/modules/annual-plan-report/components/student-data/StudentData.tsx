@@ -1,22 +1,11 @@
 import { Separator, Text } from "@fluentui/react";
 
 import Tag from "@/lib/components/tag/Tag";
-import { IAnnualPlanValues } from "@/modules/annual-plan/types/annual-plan.type";
 
-interface PTVALStudentDataProps {
-  content: IAnnualPlanValues | null;
-}
+import { renderLabelWithDescription } from "../../helpers/annual-plan-report.helper";
+import { IStudentData } from "./types/student-data.type";
 
-const renderLabelWithDescription = (label: string, description?: string) => (
-  <div className="flex flex-col">
-    <Text variant="medium" className=" font-bold">
-      {label}
-    </Text>
-    <Text variant="medium">{description}</Text>
-  </div>
-);
-
-const PTVALStudentData = ({ content }: PTVALStudentDataProps) => {
+export const StudentData = ({ content }: IStudentData) => {
   if (!content) return null;
 
   const descriptionStudent = `${content?.edad} años - ${content?.modalidad} - ${content?.["etapa educativa"]}`;
@@ -51,5 +40,3 @@ const PTVALStudentData = ({ content }: PTVALStudentDataProps) => {
     </section>
   );
 };
-
-export default PTVALStudentData;

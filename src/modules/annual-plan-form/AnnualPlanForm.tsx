@@ -2,11 +2,11 @@
 import Form from "@/lib/components/form/Form";
 import LoadingView from "@/lib/components/loading-view/LoadingView";
 
-import { anualFormPlanFields } from "./fields/annual-plan.fields";
-import { useAnnualPlan } from "./hooks/useAnnualPlan";
+import { anualPlanFormFields } from "./fields/annual-plan-form.fields";
+import { useAnnualPlanForm } from "./hooks/useAnnualPlanForm";
 
-const AnnualPlan = () => {
-  const { handleSubmit, control, reset, handleSubmitAnnualPlan, isLoading } = useAnnualPlan();
+const AnnualPlanForm = () => {
+  const { control, handleSubmit, handleSubmitAnnualPlan, isLoading, reset } = useAnnualPlanForm();
 
   if (isLoading) {
     return <LoadingView title="Por favor, espere..." message="Generando programación anual individualizado..." />;
@@ -20,7 +20,7 @@ const AnnualPlan = () => {
         reset={reset}
         handleSubmit={handleSubmit}
         onSubmit={handleSubmitAnnualPlan}
-        listFields={anualFormPlanFields}
+        listFields={anualPlanFormFields}
         labelButtonSubmit="Aceptar"
         labelButtonReset="Limpiar"
       />
@@ -28,4 +28,4 @@ const AnnualPlan = () => {
   );
 };
 
-export default AnnualPlan;
+export default AnnualPlanForm;

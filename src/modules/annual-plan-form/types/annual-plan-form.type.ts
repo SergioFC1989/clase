@@ -1,4 +1,4 @@
-export interface IAnnualPlanValues {
+export interface IAnnualPlanFormValues {
   "etapa educativa"?: string;
   modalidad?: string;
   nombre?: string;

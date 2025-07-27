@@ -1,10 +1,10 @@
-import { IAnnualPlanValues } from "@/modules/annual-plan/types/annual-plan.type";
+import { IAnnualPlanFormValues } from "@/modules/annual-plan-form/types/annual-plan-form.type";
 
-export const generatePTVALSinglePlan = (data: IAnnualPlanValues) => `
+export const generatePTVALSinglePlan = (data: IAnnualPlanFormValues) => `
 Crea un plan detallado para un curso escolar en el año corriente en Andalucía, dirigido a un alumno determinado con necesidades educativas especiales, basado en los tres ámbitos de desarrollo según la Orden del 19 de octubre de 2002 de la Junta de Andalucía, para la transición a la vida adulta laboral (PTVAL).
 
 Cada alumno tiene características únicas que deben ser tomadas en cuenta al diseñar las actividades y todo de manera individual. Especial atención a los datos del alumno que adjunto a continuación para poder realizar el plan detallado:
-${(Object.keys(data) as (keyof IAnnualPlanValues)[]).map((key) => `- ${key}: ${data[key] || "No especificado"}`).join("\n")}
+${(Object.keys(data) as (keyof IAnnualPlanFormValues)[]).map((key) => `- ${key}: ${data[key] || "No especificado"}`).join("\n")}
 
 Los ámbitos de desarrollo son:
 - Autonomía Personal (7-10 horas)

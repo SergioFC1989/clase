@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import TitleNav from "@/lib/components/title-nav/TitleNav";
 import { useAppContext } from "@/lib/context/app-context";
 
-import PTVALPlanData from "./components/ptval-plan-data";
-import PTVALStudentData from "./components/ptval-student-data";
+import { StudentData } from "./components/student-data/StudentData";
+import { SummaryData } from "./components/summary-data/SummaryData";
 
-const PTVALReport = () => {
+const AnnualPlanReport = () => {
   const router = useRouter();
   const { educationPlans } = useAppContext();
 
@@ -15,11 +15,11 @@ const PTVALReport = () => {
     <section>
       <TitleNav title="Informe Programación Anual PTVAL" onClickNavigateBack={() => router.push("/")} isVisibleButtons />
       <div className="w-full flex flex-col md:flex-row print:flex-row gap-2">
-        <PTVALStudentData content={educationPlans?.ptval?.alumno ?? null} />
-        <PTVALPlanData data={educationPlans?.ptval?.plan ?? []} />
+        <StudentData content={educationPlans?.ptval?.alumno ?? null} />
+        <SummaryData data={educationPlans?.ptval?.plan ?? []} />
       </div>
     </section>
   );
 };
 
-export default PTVALReport;
+export default AnnualPlanReport;

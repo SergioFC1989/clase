@@ -1,21 +1,9 @@
 import { Separator, Text } from "@fluentui/react";
 
-import { PlanDataProps } from "@/lib/types/type";
+import { renderLabelWithDescription } from "../../helpers/annual-plan-report.helper";
+import { ISummaryData } from "./types/summary-data.type";
 
-interface PTVALPlanDataProps {
-  data: PlanDataProps[];
-}
-
-const renderDescription = (name: string, description: string) => (
-  <div className="flex flex-col">
-    <Text variant="medium" className="font-bold">
-      {name}
-    </Text>
-    <Text variant="medium">{description}</Text>
-  </div>
-);
-
-const PTVALPlanData = ({ data }: PTVALPlanDataProps) => {
+export const SummaryData = ({ data }: ISummaryData) => {
   if (!data.length) return null;
 
   return (
@@ -39,8 +27,8 @@ const PTVALPlanData = ({ data }: PTVALPlanDataProps) => {
                 <Text variant="large" className="text-gray-600">
                   {act.nombre}
                 </Text>
-                {renderDescription("Objetivo", act.descripcion)}
-                {renderDescription("Evaluación", act.evaluacion)}
+                {renderLabelWithDescription("Objetivo", act.descripcion)}
+                {renderLabelWithDescription("Evaluación", act.evaluacion)}
               </div>
             ))}
           </div>
@@ -49,5 +37,3 @@ const PTVALPlanData = ({ data }: PTVALPlanDataProps) => {
     </div>
   );
 };
-
-export default PTVALPlanData;

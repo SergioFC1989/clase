@@ -1,6 +1,6 @@
-import { IAnnualPlanValues } from "../types/annual-plan.type";
+import { IAnnualPlanFormValues } from "../types/annual-plan-form.type";
 
-export const annualPlanValues: IAnnualPlanValues = {
+export const annualPlanFormValues: IAnnualPlanFormValues = {
   "etapa educativa": "",
   modalidad: "",
   nombre: "",

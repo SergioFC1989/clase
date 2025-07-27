@@ -1,7 +1,7 @@
 import { IDynamicFormField } from "@/lib/types/type";
 import { defaultDisorderOptions, defaultEducationalStageOptions, defaultLevelOptions, defaultModalityOptions } from "@/lib/utils/options";
 
-export const anualFormPlanFields: IDynamicFormField[] = [
+export const anualPlanFormFields: IDynamicFormField[] = [
   {
     type: "dropdown",
     label: "Etapa educativa",
