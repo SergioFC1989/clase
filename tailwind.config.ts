@@ -1,13 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/views/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       screens: {
@@ -25,11 +21,7 @@ const config: Config = {
     },
   },
   plugins: [
-    function ({
-      addComponents,
-    }: {
-      addComponents: (components: Record<string, any>) => void;
-    }) {
+    function ({ addComponents }: { addComponents: (components: Record<string, any>) => void }) {
       const newComponents = {
         ".text-ellipsis-custom": {
           "@apply text-ellipsis overflow-hidden whitespace-nowrap": {},
@@ -47,7 +39,7 @@ const config: Config = {
           variants?: string[];
           respectPrefix?: boolean;
           respectImportant?: boolean;
-        }
+        },
       ) => void;
     }) {
       const printUtilities = {

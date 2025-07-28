@@ -1,16 +1,13 @@
 "use server";
-
-import { apiGenerateContentText } from "@/services/api";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const generateContentText = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
+import { geminiRequest } from "@/lib/api/requests/gemini.request";
+
+const generateContentText = async (req: NextApiRequest, res: NextApiResponse) => {
   const { prompt } = req.body;
 
   try {
-    const result = await apiGenerateContentText(prompt);
+    const result = await geminiRequest(prompt);
     return res.json(result);
   } catch (error) {
     console.error(error);
