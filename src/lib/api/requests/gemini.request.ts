@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { OPTIONS_GEN_AI } from "../consts/api.const";
 
 const getGenerativeModelAI = () => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.API_GOOGLE_GEMINI_KEY;
 
   if (!apiKey) {
     throw new Error("API key is not defined");
