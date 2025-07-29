@@ -1,7 +1,7 @@
 "use server";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { geminiRequest } from "@/lib/api/requests/gemini.request";
+import { geminiRequest } from "@/lib/services/requests/gemini.request";
 
 const generateContentText = async (req: NextApiRequest, res: NextApiResponse) => {
   const { prompt } = req.body;

@@ -5,9 +5,9 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import { QueryClientProvider } from "react-query";
 
-import { queryClient } from "@/lib/api/clients/query.client";
 import NameLogo from "@/lib/assets/name-logo.png";
 import { AppProvider } from "@/lib/context/app-context";
+import { queryClient } from "@/lib/services/clients/query.client";
 import Theme from "@/lib/themes/theme";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
