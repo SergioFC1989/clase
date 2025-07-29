@@ -20,7 +20,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
               <Image src={NameLogo} alt="NameLogo" width={100} height={100} />
             </div>
           </header>
-          <div className="w-full h-screen overflow-auto print:h-auto flex flex-col px-1 lg:px-10 pt-20 print:pt-10 pb-8 bg-white">
+          <div className="w-full h-screen overflow-auto print:h-auto flex flex-col px-2 lg:px-10 pt-20 print:pt-10 pb-8 bg-white">
             {children}
           </div>
         </Theme>

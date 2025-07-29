@@ -1,5 +1,4 @@
 "use client";
-
 import { initializeIcons } from "@fluentui/font-icons-mdl2";
 import { createTheme, ThemeProvider } from "@fluentui/react";
 import { ReactNode, useEffect, useState } from "react";
