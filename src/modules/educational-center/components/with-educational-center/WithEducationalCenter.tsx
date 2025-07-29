@@ -51,7 +51,11 @@ export const WithEducationalCenter = () => {
       <AddButtonEducationalCenter className="self-end" />
       <div className="w-full flex flex-wrap place-content-start gap-4">
         {data.map((elem) => (
-          <DocumentCard className="w-full flex flex-col justify-center p-2 border border-solid border-neutral-300 rounded-lg" key={elem.id}>
+          <DocumentCard
+            className="w-full flex flex-col justify-center p-2 border border-solid border-neutral-300 hover:border-primary-color"
+            key={elem.id}
+            onClick={() => {}}
+          >
             <div className="flex flex-row items-center">
               <DocumentCardLogo className="m-0 p-0 self-center" logoIcon="SingleBookmark" />
               <div className="w-full flex flex-col">

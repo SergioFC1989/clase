@@ -15,8 +15,8 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     <QueryClientProvider client={queryClient}>
       <AppProvider>
         <Theme>
-          <header className="fixed top-0 left-0 w-full bg-primary-color shadow-gray-500 shadow-lg z-50 px-2 print:hidden">
-            <div className="flex flex-row gap-6 py-2 px-8">
+          <header className="fixed top-0 left-0 w-full bg-primary-color shadow-gray-400 shadow-lg z-50 px-2 print:hidden">
+            <div className="flex flex-row gap-6 py-2 px-4">
               <Image src={NameLogo} alt="NameLogo" width={100} height={100} />
             </div>
           </header>
