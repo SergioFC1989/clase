@@ -18,6 +18,9 @@ const config: Config = {
       colors: {
         "primary-color": "#28a88f",
       },
+      width: {
+        webkit: "-webkit-fill-available",
+      },
     },
   },
   plugins: [

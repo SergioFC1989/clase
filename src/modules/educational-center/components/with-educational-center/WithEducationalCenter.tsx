@@ -1,6 +1,6 @@
 import { DocumentCard, DocumentCardLogo, DocumentCardTitle } from "@fluentui/react/lib/DocumentCard";
 
-import { AddButtonEducationalCenter } from "../add-button-educational-center/AddButtonEducationalCenter";
+import { AddEducationalCenter } from "../../../add-educational-center/AddEducationalCenter";
 
 const data = [
   {
@@ -48,7 +48,7 @@ const data = [
 export const WithEducationalCenter = () => {
   return (
     <div className="w-full h-full flex flex-col gap-6">
-      <AddButtonEducationalCenter className="self-end" />
+      <AddEducationalCenter />
       <div className="w-full flex flex-wrap place-content-start gap-4">
         {data.map((elem) => (
           <DocumentCard

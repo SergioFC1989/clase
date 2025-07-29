@@ -1,11 +1,20 @@
 import { TextField as FTextField } from "@fluentui/react";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues, Path } from "react-hook-form";
 
 import { IDynamicFormField } from "@/lib/types/type";
 
-const TextField = ({ label, placeholder, name, required = false, control, isMultiline = false, rows, ...props }: IDynamicFormField) => (
+const TextField = <T extends FieldValues = FieldValues>({
+  label,
+  placeholder,
+  name,
+  required = false,
+  control,
+  isMultiline = false,
+  rows,
+  ...props
+}: IDynamicFormField<T>) => (
   <Controller
-    name={name}
+    name={name as Path<T>}
     control={control}
     rules={{ required }}
     render={({ field: { onChange, onBlur, value } }) => (

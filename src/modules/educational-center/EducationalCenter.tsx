@@ -2,7 +2,7 @@ import { WithEducationalCenter } from "./components/with-educational-center/With
 import { WithoutEducationalCenter } from "./components/without-educational-center/WithoutEducationalCenter";
 
 const EducationalCenter = () => {
-  const hasEducationalCenter = true;
+  const hasEducationalCenter = false;
 
   return hasEducationalCenter ? <WithEducationalCenter /> : <WithoutEducationalCenter />;
 };

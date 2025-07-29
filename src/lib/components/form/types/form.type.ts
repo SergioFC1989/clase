@@ -3,11 +3,12 @@ import { UseMutateAsyncFunction } from "react-query";
 
 import { IDynamicFormField } from "@/lib/types/type";
 
-export interface IForm extends Pick<UseFormReturn, "control" | "handleSubmit" | "reset"> {
-  labelButtonReset: string;
+export type TFormHandler<T extends FieldValues = FieldValues> = (data: T) => void | Promise<void>;
+
+export interface IForm<T extends FieldValues = FieldValues> extends Pick<UseFormReturn<T>, "control" | "handleSubmit" | "reset"> {
+  labelButtonReset?: string;
   labelButtonSubmit: string;
   listFields: IDynamicFormField[];
-  onSubmit: UseMutateAsyncFunction<unknown, unknown, FieldValues, unknown>;
-  _onSubmit?: (data: FieldValues) => void | Promise<void>;
+  onSubmit: UseMutateAsyncFunction<unknown, unknown, T, unknown> | TFormHandler;
   title?: string;
 }

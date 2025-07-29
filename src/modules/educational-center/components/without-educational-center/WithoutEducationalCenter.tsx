@@ -1,6 +1,6 @@
 import { Icon, Text } from "@fluentui/react";
 
-import { AddButtonEducationalCenter } from "../add-button-educational-center/AddButtonEducationalCenter";
+import { AddEducationalCenter } from "../../../add-educational-center/AddEducationalCenter";
 
 export const WithoutEducationalCenter = () => {
   return (
@@ -12,7 +12,7 @@ export const WithoutEducationalCenter = () => {
           Aún no tienes un centro educativo registrado. Crea uno para comenzar a gestionar clases, estudiantes, etc
         </Text>
       </div>
-      <AddButtonEducationalCenter />
+      <AddEducationalCenter />
     </div>
   );
 };
