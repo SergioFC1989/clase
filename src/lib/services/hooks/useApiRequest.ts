@@ -14,7 +14,7 @@ export const useApiRequest = <T = unknown>({
   useQuery<T>({
     enabled: Boolean(url),
     queryKey,
-    queryFn: async () => await apiRequest({ url, body, method, responseType }),
+    queryFn: async () => (await apiRequest({ url, body, method, responseType })) as unknown as Promise<T>,
     //Aqui incorporar notificación de error por parte del backend
     // onError: () => {},
     retry: false,

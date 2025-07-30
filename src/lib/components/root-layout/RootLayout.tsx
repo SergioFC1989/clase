@@ -12,6 +12,7 @@ import { queryClient } from "@/lib/services/clients/query.client";
 import Theme from "@/lib/themes/theme";
 
 import Backdrop from "../backdrop/Backdrop";
+import MessageBar from "../message-bar/MessageBar";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
@@ -24,8 +25,13 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
                 <Image src={NameLogo} alt="NameLogo" width={100} height={100} />
               </div>
             </header>
-            <div className="w-full h-screen overflow-auto print:h-auto flex flex-col px-2 lg:px-10 pt-20 print:pt-10 pb-8 bg-white">
-              <Backdrop>{children}</Backdrop>
+            <div className="flex flex-col w-full h-screen gap-2 pb-8">
+              <div className="pt-14">
+                <MessageBar />
+              </div>
+              <div className="w-full h-screen print:h-auto flex flex-col px-2 lg:px-10 overflow-auto bg-white">
+                <Backdrop>{children}</Backdrop>
+              </div>
             </div>
           </Theme>
         </AppProvider>

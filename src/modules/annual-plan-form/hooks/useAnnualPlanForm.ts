@@ -21,7 +21,7 @@ export const useAnnualPlanForm = () => {
   const handleSubmitAnnualPlan = useMutation({
     mutationFn: async (data: FieldValues) => {
       const response = await apiRequest({
-        url: "/api/gemini/generate-content-text",
+        url: "/api/google-gemini-ai/get-single",
         method: "POST",
         body: { prompt: generatePTVALSinglePlan(data) },
       });
@@ -29,7 +29,7 @@ export const useAnnualPlanForm = () => {
       return {
         alumno: data,
         etapaEducativa: data["etapa educativa"],
-        plan: sanitizerJSON(response),
+        plan: sanitizerJSON(response.data as string),
       };
     },
     onSuccess: (data) => {

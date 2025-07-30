@@ -16,18 +16,23 @@ export const AddEducationalCenter = () => {
       <DefaultButton iconProps={addIcon} onClick={() => handleIsOpen(true)}>
         Crear Centro Educativo
       </DefaultButton>
-      <Modal
-        containerClassName="w-full lg:w-[50%]"
-        isOpen={isOpen}
-        onDismiss={() => {
-          reset();
-          handleIsOpen(false);
-        }}
-      >
+      <Modal containerClassName="w-full lg:w-[50%]" isOpen={isOpen}>
         <div className="w-full flex flex-col justify-center gap-4 p-4">
-          <div className="flex flex-row items-center gap-6">
-            <Icon iconName="FormLibrary" style={{ fontSize: 24, color: "black" }} />
-            <Text variant="xLarge">Crear Centro Educativo</Text>
+          <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center gap-3">
+              <Icon iconName="FormLibrary" style={{ fontSize: 24, color: "black" }} />
+              <Text variant="xLarge">Crear Centro Educativo</Text>
+            </div>
+            <Icon
+              className="cursor-pointer"
+              iconName="Cancel"
+              onClick={() => {
+                reset();
+                handleIsOpen(false);
+              }}
+              style={{ color: "black", fontSize: 24 }}
+              title="Cerrar"
+            />
           </div>
           <Form
             control={control}

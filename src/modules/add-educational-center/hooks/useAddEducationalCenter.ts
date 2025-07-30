@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 
 import { useBackdrop } from "@/lib/components/backdrop/hooks/useBackdrop";
+import { useMessageBar } from "@/lib/components/message-bar/hooks/useMessageBar";
 import { apiRequest } from "@/lib/services/requests/api.request";
 
 import { IAddEducationalCenterValue } from "../types/add-educational-center.type";
@@ -14,6 +15,7 @@ export const useAddEducationalCenter = () => {
   });
 
   const { closeBackdrop, openBackdrop } = useBackdrop();
+  const { openMessageBar } = useMessageBar();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,21 +26,35 @@ export const useAddEducationalCenter = () => {
   const mutationAddEducationlCenter = useMutation({
     mutationFn: async (body: IAddEducationalCenterValue) => {
       openBackdrop();
+
       const response = await apiRequest({
         body,
         method: "POST",
-        url: "/api/db/educational-center/insert",
+        url: "/api/db/educational-center/get-single",
       });
 
-      console.log(response);
+      // If the educational center already exists, show a message and close the backdrop
+      if (response.data) {
+        openMessageBar("El Centro Educativo ya existe", "warning");
+        closeBackdrop();
+        return;
+      }
+
+      await apiRequest({
+        body,
+        method: "POST",
+        url: "/api/db/educational-center/insert-single",
+      });
+
+      openMessageBar("El Centro Educativo se ha creado correctamente", "success");
     },
     onSuccess: () => {
       reset();
       handleIsOpen(false);
       closeBackdrop();
     },
-    onError: (error) => {
-      console.error(error);
+    onError: () => {
+      openMessageBar("Ha ocurrido un error al crear el Centro Educativo", "error");
       closeBackdrop();
     },
   });

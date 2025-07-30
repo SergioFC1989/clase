@@ -12,7 +12,6 @@ const getAll = async (req: NextApiRequest, res: NextApiResponse) => {
       data: response,
     });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "500 - Error de servicio en Centros Educativos", type: "error", error });
   }
 };
