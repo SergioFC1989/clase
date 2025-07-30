@@ -19,6 +19,7 @@ const MessageBar = ({ ...props }: IMessageBar) => {
 
   return messageBar.isOpen ?
       <FMessageBar
+        className="w-full py-3 px-1"
         dismissButtonAriaLabel="Close"
         isMultiline
         messageBarType={MessageBarType[messageBar.type]}

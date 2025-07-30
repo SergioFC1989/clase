@@ -1,3 +1,4 @@
+"use client";
 import { WithEducationalCenter } from "./components/with-educational-center/WithEducationalCenter";
 import { WithoutEducationalCenter } from "./components/without-educational-center/WithoutEducationalCenter";
 import { useEducationalCenter } from "./hooks/useEducationalCenter";

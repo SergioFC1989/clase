@@ -5,7 +5,7 @@ const HomePage = () => {
       <br />
       <ul>
         <li>
-          <a href="/dashboard">Dashboard</a>
+          <a href="/educational-center">Centro Educativo</a>
         </li>
         <li>
           <a href="/annual-plan-form">Annual Plan Form</a>

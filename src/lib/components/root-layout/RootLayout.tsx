@@ -2,6 +2,7 @@
 import "@/lib/styles/style.css";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 import { QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
@@ -15,6 +16,8 @@ import Backdrop from "../backdrop/Backdrop";
 import MessageBar from "../message-bar/MessageBar";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
+  const router = useRouter();
+
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
@@ -22,7 +25,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
           <Theme>
             <header className="fixed top-0 left-0 w-full bg-primary-color shadow-gray-400 shadow-lg z-50 px-2 print:hidden">
               <div className="flex flex-row gap-6 py-2 px-4">
-                <Image src={NameLogo} alt="NameLogo" width={100} height={100} />
+                <Image className="cursor-pointer" src={NameLogo} alt="NameLogo" width={100} height={100} onClick={() => router.push("/")} />
               </div>
             </header>
             <div className="flex flex-col w-full h-screen gap-2 pb-8">
