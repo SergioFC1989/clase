@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Collection, Db } from "mongodb";
+import { Collection, Db, ObjectId } from "mongodb";
 
 import client from "../clients/mongo.client";
 
@@ -35,14 +35,13 @@ export class MongoRequest {
 
   // Perform a database operation
   private static async performDbOperation<T>(collection: string, operation: (dbCollection: Collection) => Promise<T>): Promise<T> {
-    try {
-      const db = await this.getDb();
-      const dbCollection = db.collection(collection);
-      return await operation(dbCollection);
-    } catch (error) {
-      console.error("Error en la operación de la base de datos:", error);
-      throw error;
+    const db = await this.getDb();
+    const dbCollection = db.collection(collection);
+    if (!dbCollection) {
+      throw new Error(`Collection ${collection} does not exist`);
     }
+
+    return await operation(dbCollection);
   }
 
   // Get all documents from a collection
@@ -58,5 +57,10 @@ export class MongoRequest {
   // Insert a single document into a collection
   public static async insertSingleDocument(collection: string, data: Record<string, unknown>) {
     return this.performDbOperation(collection, (dbCollection) => dbCollection.insertOne(data));
+  }
+
+  // Delete a single document from a collection
+  public static async deleteSingleDocument(collection: string, query: { _id: ObjectId }) {
+    return this.performDbOperation(collection, (dbCollection) => dbCollection.deleteOne(query));
   }
 }

@@ -29,7 +29,7 @@ export const useAnnualPlanForm = () => {
       return {
         alumno: data,
         etapaEducativa: data["etapa educativa"],
-        plan: sanitizerJSON(response.data as string),
+        plan: sanitizerJSON(response.data as unknown as string),
       };
     },
     onSuccess: (data) => {

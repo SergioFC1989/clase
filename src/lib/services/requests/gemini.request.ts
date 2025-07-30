@@ -11,6 +11,7 @@ const getGenerativeModelAI = () => {
 
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel(OPTIONS_GEN_AI);
+
   return model;
 };
 

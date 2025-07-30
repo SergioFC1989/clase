@@ -4,6 +4,7 @@ import { useMutation } from "react-query";
 
 import { useBackdrop } from "@/lib/components/backdrop/hooks/useBackdrop";
 import { useMessageBar } from "@/lib/components/message-bar/hooks/useMessageBar";
+import { queryClient } from "@/lib/services/clients/query.client";
 import { apiRequest } from "@/lib/services/requests/api.request";
 
 import { IAddEducationalCenterValue } from "../types/add-educational-center.type";
@@ -23,7 +24,7 @@ export const useAddEducationalCenter = () => {
     setIsOpen(value);
   }, []);
 
-  const mutationAddEducationlCenter = useMutation({
+  const mutationAddEducationalCenter = useMutation({
     mutationFn: async (body: IAddEducationalCenterValue) => {
       openBackdrop();
 
@@ -47,6 +48,7 @@ export const useAddEducationalCenter = () => {
       });
 
       openMessageBar("El Centro Educativo se ha creado correctamente", "success");
+      queryClient.invalidateQueries(["educational-center-get-all"]);
     },
     onSuccess: () => {
       reset();
@@ -62,14 +64,14 @@ export const useAddEducationalCenter = () => {
   const values = useMemo(
     () => ({
       control,
-      handleAddEducationlCenterForm: mutationAddEducationlCenter.mutateAsync,
+      handleAddEducationlCenterForm: mutationAddEducationalCenter.mutateAsync,
       handleIsOpen,
       handleSubmit,
-      isLoading: mutationAddEducationlCenter.isLoading,
+      isLoading: mutationAddEducationalCenter.isLoading,
       isOpen,
       reset,
     }),
-    [control, mutationAddEducationlCenter.isLoading, mutationAddEducationlCenter.mutateAsync, handleIsOpen, handleSubmit, isOpen, reset],
+    [control, mutationAddEducationalCenter.isLoading, mutationAddEducationalCenter.mutateAsync, handleIsOpen, handleSubmit, isOpen, reset],
   );
 
   return values;

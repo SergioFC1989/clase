@@ -20,7 +20,7 @@ export interface IUseApiRequest<T = unknown> extends IApiRequest {
 }
 
 export interface IRequestDefaultParams<T = unknown> extends AxiosRequestConfig, IPagination {
-  data?: T | T[];
+  data?: T[];
 }
 
 export interface IPaginatedResponseDefault<T = unknown> extends IPagination {
@@ -31,7 +31,7 @@ export interface IPaginatedResponseDefault<T = unknown> extends IPagination {
 }
 
 export interface IApiRequestResponse<T = unknown> {
-  data?: T | T[] | null;
+  data?: T[];
   error?: unknown;
   message: string;
   type: keyof typeof MessageBarType;

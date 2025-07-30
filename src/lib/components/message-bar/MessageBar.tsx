@@ -23,7 +23,6 @@ const MessageBar = ({ ...props }: IMessageBar) => {
         isMultiline
         messageBarType={MessageBarType[messageBar.type]}
         onDismiss={closeMessageBar}
-        truncated={true}
         {...props}
       >
         {typeof messageBar.message === "string" ?

@@ -12,7 +12,7 @@ const getSingle = async (req: NextApiRequest, res: NextApiResponse) => {
       data: response,
     });
   } catch (error) {
-    res.status(500).json({ message: "500 - Error de servicio en Centro Educativo", type: "error", error });
+    res.status(500).json({ message: "Error al consultar el Centro Educativo", type: "error", error });
   }
 };
 

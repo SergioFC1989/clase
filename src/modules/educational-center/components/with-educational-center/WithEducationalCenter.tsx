@@ -1,70 +1,70 @@
+"use client";
+import { DirectionalHint, IconButton, TeachingBubble } from "@fluentui/react";
 import { DocumentCard, DocumentCardLogo, DocumentCardTitle } from "@fluentui/react/lib/DocumentCard";
+import { useState } from "react";
 
 import { AddEducationalCenter } from "../../../add-educational-center/AddEducationalCenter";
+import { IEducationalCenter } from "../../types/educational-center.type";
 
-const data = [
-  {
-    id: "1",
-    nombre: "I.E.S Mar de Cádiz",
-    localidad: "El Puerto de Santa María",
-  },
-  {
-    id: "2",
-    nombre: "Colegio San Luis Gonzaga",
-    localidad: "El Puerto de Santa María",
-  },
-  {
-    id: "3",
-    nombre: "I.E.S. La Marisma",
-    localidad: "El Puerto de Santa María",
-  },
-  {
-    id: "4",
-    nombre: "Colegio San Juan Bosco",
-    localidad: "El Puerto de Santa María",
-  },
-  {
-    id: "5",
-    nombre: "I.E.S. José Luis Tejada",
-    localidad: "El Puerto de Santa María",
-  },
-  {
-    id: "6",
-    nombre: "Colegio La Salle",
-    localidad: "El Puerto de Santa María",
-  },
-  {
-    id: "7",
-    nombre: "I.E.S. Pedro Muñoz Seca",
-    localidad: "El Puerto de Santa María",
-  },
-  {
-    id: "8",
-    nombre: "Colegio San José",
-    localidad: "El Puerto de Santa María",
-  },
-];
+export const WithEducationalCenter = ({ data, onDeleteEducationalCenter }: IEducationalCenter) => {
+  const [visibleBubbleId, setVisibleBubbleId] = useState<string | null>(null);
 
-export const WithEducationalCenter = () => {
   return (
     <div className="w-full h-full flex flex-col gap-6">
-      <AddEducationalCenter />
+      <div className="w-full flex sm:justify-end">
+        <AddEducationalCenter />
+      </div>
       <div className="w-full flex flex-wrap place-content-start gap-4">
-        {data.map((elem) => (
-          <DocumentCard
-            className="w-full flex flex-col justify-center p-2 border border-solid border-neutral-300 hover:border-primary-color"
-            key={elem.id}
-            onClick={() => {}}
-          >
-            <div className="flex flex-row items-center">
-              <DocumentCardLogo className="m-0 p-0 self-center" logoIcon="SingleBookmark" />
-              <div className="w-full flex flex-col">
-                <DocumentCardTitle className="font-semibold text-xl" title={elem.nombre} />
-                <DocumentCardTitle showAsSecondaryTitle title={elem.localidad} />
-              </div>
-            </div>
-          </DocumentCard>
-        ))}
+        {data &&
+          data.map((elem) => {
+            const id = `delete-button-${elem._id}`;
+            const isVisible = visibleBubbleId === elem._id;
+
+            return (
+              <DocumentCard
+                className="w-full flex flex-col justify-center p-2 border border-solid border-neutral-300 hover:border-primary-color"
+                key={elem._id}
+                onClick={() => {}}
+              >
+                <div className="flex flex-row items-center">
+                  <DocumentCardLogo className="m-0 p-0 self-center" logoIcon="SingleBookmark" />
+                  <div className="w-full flex flex-col">
+                    <DocumentCardTitle className="font-semibold text-xl" title={elem.nombre} />
+                    <DocumentCardTitle showAsSecondaryTitle title={elem.localidad} />
+                  </div>
+                  <IconButton
+                    ariaLabel="Eliminar"
+                    id={id}
+                    className="m-0 p-0 self-center *:hover:cursor-pointer *:hover:opacity-50"
+                    iconProps={{ iconName: "Delete", style: { color: "red", fontSize: 20 } }}
+                    onClick={() => setVisibleBubbleId(elem._id)}
+                    title="Eliminar"
+                  />
+                  {isVisible && (
+                    <TeachingBubble
+                      calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
+                      closeButtonAriaLabel="Close"
+                      hasCloseButton={true}
+                      headline="Eliminar Centro Educativo"
+                      isWide={true}
+                      onDismiss={() => setVisibleBubbleId(null)}
+                      primaryButtonProps={{
+                        text: "Eliminar",
+                        onClick: () => {
+                          setVisibleBubbleId(null);
+                          onDeleteEducationalCenter(elem._id);
+                        },
+                        color: "red",
+                      }}
+                      target={`#${id}`}
+                    >
+                      <p>¿Estás seguro de que quieres eliminar el centro educativo {elem.nombre}? Esta acción no se puede deshacer.</p>
+                    </TeachingBubble>
+                  )}
+                </div>
+              </DocumentCard>
+            );
+          })}
       </div>
     </div>
   );

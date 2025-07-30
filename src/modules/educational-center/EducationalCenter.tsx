@@ -1,10 +1,13 @@
 import { WithEducationalCenter } from "./components/with-educational-center/WithEducationalCenter";
 import { WithoutEducationalCenter } from "./components/without-educational-center/WithoutEducationalCenter";
+import { useEducationalCenter } from "./hooks/useEducationalCenter";
 
 const EducationalCenter = () => {
-  const hasEducationalCenter = false;
+  const { data, handleDeleteEducationalCenter } = useEducationalCenter();
 
-  return hasEducationalCenter ? <WithEducationalCenter /> : <WithoutEducationalCenter />;
+  return Array.isArray(data) && !data.length ?
+      <WithoutEducationalCenter />
+    : <WithEducationalCenter data={data} onDeleteEducationalCenter={handleDeleteEducationalCenter} />;
 };
 
 export default EducationalCenter;
