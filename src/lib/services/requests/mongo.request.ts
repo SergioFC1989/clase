@@ -4,7 +4,7 @@ import { Collection, Db } from "mongodb";
 import client from "../clients/mongo.client";
 
 export class MongoRequest {
-  private static dbName: string = "aula_diversa";
+  private static dbName: string = "clase";
   private static isConnected = false;
 
   // Connect to the database if needed

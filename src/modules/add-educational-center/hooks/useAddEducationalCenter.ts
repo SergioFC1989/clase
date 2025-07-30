@@ -2,6 +2,9 @@ import { useCallback, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 
+import { useBackdrop } from "@/lib/components/backdrop/hooks/useBackdrop";
+import { apiRequest } from "@/lib/services/requests/api.request";
+
 import { IAddEducationalCenterValue } from "../types/add-educational-center.type";
 import { addEducationalCenterValue } from "../values/add-educational-center.value";
 
@@ -10,6 +13,8 @@ export const useAddEducationalCenter = () => {
     defaultValues: addEducationalCenterValue,
   });
 
+  const { closeBackdrop, openBackdrop } = useBackdrop();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleIsOpen = useCallback((value: boolean) => {
@@ -17,14 +22,24 @@ export const useAddEducationalCenter = () => {
   }, []);
 
   const mutationAddEducationlCenter = useMutation({
-    mutationFn: async (data: IAddEducationalCenterValue) => {
-      // Simulate an API call to add the educational center
-      console.log("Adding educational center:", data);
-      return { localidad: "El Puerto de Santa María", nombre: "Centro Educativo Ejemplo" };
+    mutationFn: async (body: IAddEducationalCenterValue) => {
+      openBackdrop();
+      const response = await apiRequest({
+        body,
+        method: "POST",
+        url: "/api/db/educational-center/insert",
+      });
+
+      console.log(response);
     },
     onSuccess: () => {
       reset();
       handleIsOpen(false);
+      closeBackdrop();
+    },
+    onError: (error) => {
+      console.error(error);
+      closeBackdrop();
     },
   });
 
