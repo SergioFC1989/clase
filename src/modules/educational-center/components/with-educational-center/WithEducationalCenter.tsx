@@ -11,21 +11,18 @@ export const WithEducationalCenter = ({ data, onDeleteEducationalCenter }: IEduc
   const router = useRouter();
   const [visibleBubbleId, setVisibleBubbleId] = useState<string | null>(null);
 
+  const breadcrumbItems = [
+    { text: "Inicio", key: "home", onClick: () => router.push("/") },
+    { text: "Centro Educativo", key: "educational-center" },
+  ];
+
   return (
-    <div className="w-full h-full flex flex-col gap-6">
-      <div className="w-full flex sm:flex-row flex-col justify-between gap-4">
-        <div className="flex flex-row items-center gap-4">
-          <Breadcrumb
-            items={[
-              { text: "Inicio", key: "home", onClick: () => router.push("/") },
-              { text: "Centro Educativo", key: "educational-center" },
-            ]}
-            maxDisplayedItems={2}
-            overflowAriaLabel="Más elementos"
-            className="w-full"
-          />
+    <div className="w-full h-full flex flex-col gap-10">
+      <div className="w-full flex sm:flex-row flex-col justify-between gap-2">
+        <Breadcrumb items={breadcrumbItems} maxDisplayedItems={4} overflowAriaLabel="Más elementos" className="w-full" />
+        <div className="flex">
+          <AddEducationalCenter />
         </div>
-        <AddEducationalCenter />
       </div>
       <div className="w-full flex flex-wrap place-content-start gap-4">
         {data &&
@@ -37,7 +34,7 @@ export const WithEducationalCenter = ({ data, onDeleteEducationalCenter }: IEduc
               <DocumentCard
                 className="w-full flex flex-col justify-center p-2 border border-solid border-neutral-300 hover:border-primary-color"
                 key={elem._id}
-                onClick={() => {}}
+                onClick={() => router.push(`/educational-center/${elem._id}/classroom`)}
               >
                 <div className="flex flex-row items-center">
                   <DocumentCardLogo className="m-0 p-0 self-center" logoIcon="SingleBookmark" />
