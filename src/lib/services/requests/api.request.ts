@@ -2,11 +2,16 @@ import axios from "axios";
 
 import { axiosClient } from "../clients/axios.client";
 import { DEFAULT_LIST_STATUS_ERROR } from "../consts/api.const";
-import { IApiRequest } from "../types/api.type";
+import { IApiRequest, IApiRequestResponse } from "../types/api.type";
 
 const isErrorStatus = (status: number) => DEFAULT_LIST_STATUS_ERROR.includes(status);
 
-export const apiRequest = async ({ body, method = "GET", responseType = "json", url }: IApiRequest) => {
+export const apiRequest = async <T = unknown>({
+  body,
+  method = "GET",
+  responseType = "json",
+  url,
+}: IApiRequest): Promise<IApiRequestResponse<T>> => {
   try {
     const response = await axiosClient.request({
       method,

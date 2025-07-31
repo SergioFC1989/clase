@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fluentui/react": "^8.120.9",
+    "@auth/mongodb-adapter": "^3.10.0",
+    "@fluentui/react": "^8.123.2",
     "@google/generative-ai": "^0.19.0",
     "axios": "^1.10.0",
+    "mongodb": "^6.18.0",
+    "mongodb-client-encryption": "^6.4.0",
     "next": "^14.2.13",
+    "next-auth": "^4.24.11",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "react-spinners": "^0.17.0",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@types/node": "^20",

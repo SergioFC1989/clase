@@ -1,4 +1,7 @@
 import RootLayout from "@/lib/components/root-layout/RootLayout";
+import { MongoRequest } from "@/lib/services/requests/mongo.request";
+
+MongoRequest.connect();
 
 const Layout = ({
   children,

@@ -1,5 +1,5 @@
 import { IDropdownOption } from "@fluentui/react";
-import { UseFormReturn } from "react-hook-form";
+import { FieldValues, UseFormReturn } from "react-hook-form";
 
 import { IAnnualPlanFormValues } from "@/modules/annual-plan-form/types/annual-plan-form.type";
 import { TScopeSummary } from "@/modules/annual-plan-report/components/summary-data/types/summary-data.type";
@@ -14,7 +14,7 @@ export type ResponseAnnualPlanProps = {
   ptval: ReportStudentProps | null;
 };
 
-export interface IDynamicFormField extends Partial<Pick<UseFormReturn, "control" | "register">> {
+export interface IDynamicFormField<T extends FieldValues = FieldValues> extends Partial<Pick<UseFormReturn<T>, "control" | "register">> {
   col?: number;
   isMultiSelect?: boolean;
   isMultiline?: boolean;

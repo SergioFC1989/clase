@@ -1,3 +1,4 @@
+import { MessageBarType } from "@fluentui/react";
 import { AxiosRequestConfig, Method } from "axios";
 import { UseQueryOptions } from "react-query";
 
@@ -19,7 +20,7 @@ export interface IUseApiRequest<T = unknown> extends IApiRequest {
 }
 
 export interface IRequestDefaultParams<T = unknown> extends AxiosRequestConfig, IPagination {
-  data?: T | T[];
+  data?: T[];
 }
 
 export interface IPaginatedResponseDefault<T = unknown> extends IPagination {
@@ -27,4 +28,11 @@ export interface IPaginatedResponseDefault<T = unknown> extends IPagination {
   data: T | T[];
   pageCount: number;
   totalCount: number;
+}
+
+export interface IApiRequestResponse<T = unknown> {
+  data?: T[];
+  error?: unknown;
+  message: string;
+  type: keyof typeof MessageBarType;
 }

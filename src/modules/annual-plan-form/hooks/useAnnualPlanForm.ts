@@ -3,9 +3,9 @@ import { useMemo } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 
-import { apiRequest } from "@/lib/api/requests/api.request";
 import { useAppContext } from "@/lib/context/app-context";
 import { generatePTVALSinglePlan } from "@/lib/prompts/ptval-single-plan";
+import { apiRequest } from "@/lib/services/requests/api.request";
 import { sanitizerJSON } from "@/lib/utils/util";
 
 import { annualPlanFormValues } from "../values/annual-plan-form.values";
@@ -21,7 +21,7 @@ export const useAnnualPlanForm = () => {
   const handleSubmitAnnualPlan = useMutation({
     mutationFn: async (data: FieldValues) => {
       const response = await apiRequest({
-        url: "/api/gemini/generate-content-text",
+        url: "/api/google-gemini-ai/get-single",
         method: "POST",
         body: { prompt: generatePTVALSinglePlan(data) },
       });
@@ -29,7 +29,7 @@ export const useAnnualPlanForm = () => {
       return {
         alumno: data,
         etapaEducativa: data["etapa educativa"],
-        plan: sanitizerJSON(response),
+        plan: sanitizerJSON(response.data as unknown as string),
       };
     },
     onSuccess: (data) => {

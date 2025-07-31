@@ -1,4 +1,5 @@
 import { DefaultButton, PrimaryButton } from "@fluentui/react";
+import { FieldValues } from "react-hook-form";
 
 import { IDynamicFormField } from "@/lib/types/type";
 
@@ -6,19 +7,28 @@ import Dropdown from "../dropdown/Dropdown";
 import Slider from "../slider/Slider";
 import TextField from "../text-field/TextField";
 import TitleNav from "../title-nav/TitleNav";
-import { IForm } from "./types/form.type";
+import { IForm, TFormHandler } from "./types/form.type";
 import { groupByColForm } from "./utils/form.util";
 
-const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], labelButtonSubmit, labelButtonReset }: IForm) => {
+const Form = <T extends FieldValues>({
+  title,
+  handleSubmit,
+  onSubmit,
+  reset,
+  control,
+  listFields = [],
+  labelButtonSubmit,
+  labelButtonReset,
+}: IForm<T>) => {
   const groupedFields: { [key: string]: IDynamicFormField[] } = groupByColForm(listFields);
 
   return (
     <>
       {title && <TitleNav title={title} />}
       <form
-        className="w-full flex flex-col gap-4"
+        className="w-full flex flex-col gap-4 items-end"
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
-        onSubmit={handleSubmit((onSubmit as unknown as IForm["_onSubmit"]) || (() => {}))}
+        onSubmit={handleSubmit((onSubmit as unknown as TFormHandler<T>) || (() => {}))}
         onReset={() => reset && reset()}
       >
         {Object.keys(groupedFields).map((col) => (
@@ -26,7 +36,7 @@ const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], 
             {groupedFields[col].map((field) => (
               <div className="w-full flex flex-col s:flex-row" key={field.name}>
                 {field.type === "text" && (
-                  <TextField
+                  <TextField<T>
                     label={field.label}
                     placeholder={field.placeholder}
                     name={field.name}
@@ -37,10 +47,10 @@ const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], 
                   />
                 )}
                 {field.type === "slider" && (
-                  <Slider label={field.label} name={field.name} control={control} min={field.min} max={field.max} step={field.step} />
+                  <Slider<T> label={field.label} name={field.name} control={control} min={field.min} max={field.max} step={field.step} />
                 )}
                 {field.type === "dropdown" && (
-                  <Dropdown
+                  <Dropdown<T>
                     label={field.label}
                     name={field.name}
                     control={control}
@@ -54,10 +64,10 @@ const Form = ({ title, handleSubmit, onSubmit, reset, control, listFields = [], 
             ))}
           </div>
         ))}
-        <div className="w-full flex gap-4 justify-center">
-          <PrimaryButton className="my-4 w-3/4 lg:w-2/4 items-center" text={labelButtonSubmit} type="submit" />
+        <div className="xl:w-[25%] flex justify-center content-end gap-2">
+          <PrimaryButton className="my-4 w-3/4 xl:w-2/4 items-center" text={labelButtonSubmit} type="submit" />
           {typeof reset === "function" && (
-            <DefaultButton className="my-4 w-3/4 lg:w-2/4 items-center" text={labelButtonReset} type="reset" />
+            <DefaultButton className="my-4 w-3/4 xl:w-2/4 items-center" text={labelButtonReset ?? "Limpiar"} type="reset" />
           )}
         </div>
       </form>
