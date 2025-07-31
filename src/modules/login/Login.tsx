@@ -7,7 +7,7 @@ import { loginField } from "./fields/login.field";
 import { useLogin } from "./hooks/useLogin";
 
 const Login = () => {
-  const { control, handleSubmit } = useLogin();
+  const { control, handleLogin, handleSubmit } = useLogin();
 
   return (
     <div className="w-full flex flex-col items-center gap-6">
@@ -26,7 +26,7 @@ const Login = () => {
           handleSubmit={handleSubmit}
           labelButtonSubmit="Iniciar sesión"
           listFields={loginField}
-          onSubmit={() => {}}
+          onSubmit={handleLogin}
         />
         <Link>¿Olvidaste tu contraseña?</Link>
       </DocumentCard>
