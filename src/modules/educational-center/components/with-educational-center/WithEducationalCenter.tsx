@@ -32,13 +32,12 @@ export const WithEducationalCenter = ({ data, onDeleteEducationalCenter }: IEduc
 
             return (
               <DocumentCard
-                className="w-full flex flex-col justify-center p-2 border border-solid border-neutral-300 hover:border-primary-color"
+                className="w-full flex flex-col justify-center p-2 border border-solid cursor-pointer border-neutral-300 hover:border-primary-color"
                 key={elem._id}
-                onClick={() => router.push(`/educational-center/${elem._id}/classroom`)}
               >
                 <div className="flex flex-row items-center">
                   <DocumentCardLogo className="m-0 p-0 self-center" logoIcon="SingleBookmark" />
-                  <div className="truncate w-full max-w-full">
+                  <div className="truncate w-full max-w-full" onClick={() => router.push(`/educational-center/${elem._id}/classroom`)}>
                     <DocumentCardTitle className="truncate font-semibold text-xl" title={elem.nombre} />
                     <DocumentCardTitle className="truncate" showAsSecondaryTitle title={elem.localidad} />
                   </div>
@@ -60,7 +59,8 @@ export const WithEducationalCenter = ({ data, onDeleteEducationalCenter }: IEduc
                       onDismiss={() => setVisibleBubbleId(null)}
                       primaryButtonProps={{
                         text: "Eliminar",
-                        onClick: () => {
+                        onClick: (e) => {
+                          e.stopPropagation();
                           setVisibleBubbleId(null);
                           onDeleteEducationalCenter(elem._id);
                         },
