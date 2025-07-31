@@ -5,7 +5,10 @@ import { IDynamicFormField } from "@/lib/types/type";
 
 export type TFormHandler<T extends FieldValues = FieldValues> = (data: T) => void | Promise<void>;
 
-export interface IForm<T extends FieldValues = FieldValues> extends Pick<UseFormReturn<T>, "control" | "handleSubmit" | "reset"> {
+export interface IForm<T extends FieldValues = FieldValues>
+  extends Pick<UseFormReturn<T>, "control" | "handleSubmit">,
+    Partial<Pick<UseFormReturn<T>, "reset">> {
+  classNameGroupButtons?: string;
   labelButtonReset?: string;
   labelButtonSubmit: string;
   listFields: IDynamicFormField[];

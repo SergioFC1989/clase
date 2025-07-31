@@ -11,14 +11,15 @@ import { IForm, TFormHandler } from "./types/form.type";
 import { groupByColForm } from "./utils/form.util";
 
 const Form = <T extends FieldValues>({
-  title,
+  classNameGroupButtons,
+  control,
   handleSubmit,
+  labelButtonReset,
+  labelButtonSubmit,
+  listFields = [],
   onSubmit,
   reset,
-  control,
-  listFields = [],
-  labelButtonSubmit,
-  labelButtonReset,
+  title,
 }: IForm<T>) => {
   const groupedFields: { [key: string]: IDynamicFormField[] } = groupByColForm(listFields);
 
@@ -46,6 +47,18 @@ const Form = <T extends FieldValues>({
                     isMultiline={field.isMultiline}
                   />
                 )}
+                {field.type === "password" && (
+                  <TextField<T>
+                    label={field.label}
+                    placeholder={field.placeholder}
+                    name={field.name}
+                    control={control}
+                    required={field.required}
+                    rows={field.rows}
+                    isMultiline={field.isMultiline}
+                    type="password"
+                  />
+                )}
                 {field.type === "slider" && (
                   <Slider<T> label={field.label} name={field.name} control={control} min={field.min} max={field.max} step={field.step} />
                 )}
@@ -64,7 +77,7 @@ const Form = <T extends FieldValues>({
             ))}
           </div>
         ))}
-        <div className="xl:w-[25%] flex justify-center content-end gap-2">
+        <div className={classNameGroupButtons ?? "xl:w-[25%] flex justify-center content-end gap-2"}>
           <PrimaryButton className="my-4 w-3/4 xl:w-2/4 items-center" text={labelButtonSubmit} type="submit" />
           {typeof reset === "function" && (
             <DefaultButton className="my-4 w-3/4 xl:w-2/4 items-center" text={labelButtonReset ?? "Limpiar"} type="reset" />

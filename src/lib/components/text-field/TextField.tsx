@@ -4,13 +4,14 @@ import { Controller, FieldValues, Path } from "react-hook-form";
 import { IDynamicFormField } from "@/lib/types/type";
 
 const TextField = <T extends FieldValues = FieldValues>({
-  label,
-  placeholder,
-  name,
-  required = false,
   control,
   isMultiline = false,
+  label,
+  name,
+  placeholder,
+  required = false,
   rows,
+  type,
   ...props
 }: IDynamicFormField<T>) => (
   <Controller
@@ -19,14 +20,17 @@ const TextField = <T extends FieldValues = FieldValues>({
     rules={{ required }}
     render={({ field: { onChange, onBlur, value } }) => (
       <FTextField
+        canRevealPassword={type === "password" ? true : undefined}
         className="w-full"
         label={label}
+        multiline={isMultiline}
+        onBlur={onBlur}
+        onChange={onChange}
         placeholder={placeholder}
         required={required}
-        multiline={isMultiline}
+        revealPasswordAriaLabel={type === "password" ? "Mostrar contraseña" : undefined}
         rows={rows}
-        onChange={onChange}
-        onBlur={onBlur}
+        type={type}
         value={value || ""}
         {...props}
       />
