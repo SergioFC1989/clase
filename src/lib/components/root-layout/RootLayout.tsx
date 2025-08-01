@@ -3,12 +3,13 @@ import "@/lib/styles/style.css";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 
 import NameLogo from "@/lib/assets/name-logo.png";
 import { AppProvider } from "@/lib/context/app-context";
+import { useExpiringLocalStorage } from "@/lib/hooks/useExpiringLocalStorage";
 import { queryClient } from "@/lib/services/clients/query.client";
 import Theme from "@/lib/themes/theme";
 
@@ -17,6 +18,16 @@ import MessageBar from "../message-bar/MessageBar";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
+
+  const { get } = useExpiringLocalStorage("idUser");
+
+  useEffect(() => {
+    const userId = get();
+
+    if (userId === null) {
+      return router.push("/login");
+    }
+  }, [get, router]);
 
   return (
     <QueryClientProvider client={queryClient}>

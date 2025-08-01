@@ -28,7 +28,7 @@ export const useAddEducationalCenter = () => {
     mutationFn: async (body: IAddEducationalCenterValue) => {
       openBackdrop();
 
-      const response = await apiRequest({
+      const response = await apiRequest<IAddEducationalCenterValue>({
         body,
         method: "POST",
         url: "/api/db/educational-center/get-single",

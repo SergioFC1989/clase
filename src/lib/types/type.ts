@@ -29,3 +29,10 @@ export interface IDynamicFormField<T extends FieldValues = FieldValues> extends 
   step?: number;
   type?: "dropdown" | "password" | "slider" | "text";
 }
+
+export interface IUsers {
+  clave: string;
+  email: string;
+  nombre: string;
+  _id: string;
+}
