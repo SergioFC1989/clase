@@ -21,7 +21,7 @@ export const useLogin = () => {
 
   const { closeBackdrop, openBackdrop } = useBackdrop();
   const { openMessageBar } = useMessageBar();
-  const { set } = useExpiringLocalStorage("idUser");
+  const { set } = useExpiringLocalStorage("userId");
 
   const mutationLogin = useMutation({
     mutationFn: async (body: ILoginValue) => {

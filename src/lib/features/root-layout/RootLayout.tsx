@@ -3,35 +3,26 @@ import "@/lib/styles/style.css";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 
 import NameLogo from "@/lib/assets/name-logo.png";
 import { AppProvider } from "@/lib/context/app-context";
-import { useExpiringLocalStorage } from "@/lib/hooks/useExpiringLocalStorage";
 import { queryClient } from "@/lib/services/clients/query.client";
 import Theme from "@/lib/themes/theme";
 
-import Backdrop from "../backdrop/Backdrop";
-import MessageBar from "../message-bar/MessageBar";
+import Backdrop from "../../components/backdrop/Backdrop";
+import MessageBar from "../../components/message-bar/MessageBar";
+import { UserInitializer } from "../user-initializer/UserInitializer";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
 
-  const { get } = useExpiringLocalStorage("idUser");
-
-  useEffect(() => {
-    const userId = get();
-
-    if (userId === null) {
-      return router.push("/login");
-    }
-  }, [get, router]);
-
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
+        <UserInitializer />
         <AppProvider>
           <Theme>
             <header className="fixed top-0 left-0 w-full bg-primary-color shadow-gray-400 shadow-lg z-50 px-2 print:hidden">
