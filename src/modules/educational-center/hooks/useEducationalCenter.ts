@@ -25,7 +25,7 @@ export const useEducationalCenter = () => {
     },
     queryFn: async () => {
       openBackdrop();
-      const response = await apiRequest<IEducationalCenterValue>({
+      const response = await apiRequest<IEducationalCenterValue[]>({
         url: getAllUrl,
       });
 

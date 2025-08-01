@@ -31,7 +31,7 @@ export interface IPaginatedResponseDefault<T = unknown> extends IPagination {
 }
 
 export interface IApiRequestResponse<T = unknown> {
-  data?: T[];
+  data?: T;
   error?: unknown;
   message: string;
   type: keyof typeof MessageBarType;

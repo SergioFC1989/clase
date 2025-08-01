@@ -1,16 +1,20 @@
 import { useCallback, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
+import { useRecoilValue } from "recoil";
 
 import { useBackdrop } from "@/lib/components/backdrop/hooks/useBackdrop";
 import { useMessageBar } from "@/lib/components/message-bar/hooks/useMessageBar";
 import { queryClient } from "@/lib/services/clients/query.client";
 import { apiRequest } from "@/lib/services/requests/api.request";
+import { userIdState } from "@/lib/states/expiring-local-storage.state";
 
 import { IAddEducationalCenterValue } from "../types/add-educational-center.type";
 import { addEducationalCenterValue } from "../values/add-educational-center.value";
 
 export const useAddEducationalCenter = () => {
+  const userId = useRecoilValue(userIdState);
+
   const { handleSubmit, control, reset } = useForm({
     defaultValues: addEducationalCenterValue,
   });
@@ -28,8 +32,8 @@ export const useAddEducationalCenter = () => {
     mutationFn: async (body: IAddEducationalCenterValue) => {
       openBackdrop();
 
-      const response = await apiRequest({
-        body,
+      const response = await apiRequest<IAddEducationalCenterValue>({
+        body: { ...body, userId },
         method: "POST",
         url: "/api/db/educational-center/get-single",
       });
@@ -42,7 +46,7 @@ export const useAddEducationalCenter = () => {
       }
 
       await apiRequest({
-        body,
+        body: { ...body, userId },
         method: "POST",
         url: "/api/db/educational-center/insert-single",
       });

@@ -12,8 +12,9 @@ import { AppProvider } from "@/lib/context/app-context";
 import { queryClient } from "@/lib/services/clients/query.client";
 import Theme from "@/lib/themes/theme";
 
-import Backdrop from "../backdrop/Backdrop";
-import MessageBar from "../message-bar/MessageBar";
+import Backdrop from "../../components/backdrop/Backdrop";
+import MessageBar from "../../components/message-bar/MessageBar";
+import { UserInitializer } from "../user-initializer/UserInitializer";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
@@ -21,6 +22,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
+        <UserInitializer />
         <AppProvider>
           <Theme>
             <header className="fixed top-0 left-0 w-full bg-primary-color shadow-gray-400 shadow-lg z-50 px-2 print:hidden">
