@@ -2,25 +2,26 @@
 import { EntityCreateModal } from "@/lib/features/entity-create-modal/EntityCreateModal";
 import { useEntityCreateModal } from "@/lib/features/entity-create-modal/hooks/useEntityCreateModal";
 
-import { addEducationalCenterField } from "./fields/add-educational-center.field";
-import { useAddEducationalCenter } from "./hooks/useAddEducationalCenter";
+import { addClassroomField } from "./fields/add-classroom.field";
+import { useAddClassroom } from "./hooks/useAddClassroom";
 
-export const AddEducationalCenter = () => {
-  const { control, handleAddEducationlCenterForm, handleSubmit, reset } = useAddEducationalCenter();
+export const AddClassroom = () => {
+  const { control, handleAddEducationlCenterForm, handleSubmit, reset } = useAddClassroom();
   const { handleIsCloseCreateModal, handleIsOpenCreateModal, isOpen } = useEntityCreateModal();
 
   return (
     <EntityCreateModal
       control={control}
       handleSubmit={handleSubmit}
+      iconName="ClassroomLogo"
       isOpen={isOpen}
       labelButtonSubmit="Crear"
-      listFields={addEducationalCenterField}
+      listFields={addClassroomField}
       onClose={handleIsCloseCreateModal}
       onOpen={handleIsOpenCreateModal}
       onSubmit={handleAddEducationlCenterForm}
       reset={reset}
-      title="Crear Centro Educativo"
+      title="Crear Aula"
     />
   );
 };

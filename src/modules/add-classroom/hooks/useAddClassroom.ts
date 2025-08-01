@@ -1,42 +1,46 @@
-import { useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useRecoilValue } from "recoil";
 
 import { useBackdrop } from "@/lib/components/backdrop/hooks/useBackdrop";
 import { useMessageBar } from "@/lib/components/message-bar/hooks/useMessageBar";
-import { useEntityCreateModal } from "@/lib/features/entity-create-modal/hooks/useEntityCreateModal";
 import { queryClient } from "@/lib/services/clients/query.client";
 import { apiRequest } from "@/lib/services/requests/api.request";
 import { userIdState } from "@/lib/states/expiring-local-storage.state";
 
-import { IAddEducationalCenterValue } from "../types/add-educational-center.type";
-import { addEducationalCenterValue } from "../values/add-educational-center.value";
+import { IAddClassroomValue } from "../types/add-classroom.type";
+import { addClassroomValue } from "../values/add-classroom.value";
 
-export const useAddEducationalCenter = () => {
+export const useAddClassroom = () => {
   const userId = useRecoilValue(userIdState);
 
   const { handleSubmit, control, reset } = useForm({
-    defaultValues: addEducationalCenterValue,
+    defaultValues: addClassroomValue,
   });
 
   const { closeBackdrop, openBackdrop } = useBackdrop();
   const { openMessageBar } = useMessageBar();
-  const { handleIsCloseCreateModal } = useEntityCreateModal();
 
-  const mutationAddEducationalCenter = useMutation({
-    mutationFn: async (body: IAddEducationalCenterValue) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleIsOpen = useCallback((value: boolean) => {
+    setIsOpen(value);
+  }, []);
+
+  const mutationAddClassroom = useMutation({
+    mutationFn: async (body: IAddClassroomValue) => {
       openBackdrop();
 
-      const response = await apiRequest<IAddEducationalCenterValue>({
+      const response = await apiRequest<IAddClassroomValue>({
         body: { ...body, userId },
         method: "POST",
         url: "/api/db/educational-center/get-single",
       });
 
-      // If the educational center already exists, show a message and close the backdrop
+      // If the classroom already exists, show a message and close the backdrop
       if (response.data) {
-        openMessageBar("El Centro Educativo ya existe", "warning");
+        openMessageBar("El Aula ya existe", "warning");
         closeBackdrop();
         return;
       }
@@ -47,16 +51,16 @@ export const useAddEducationalCenter = () => {
         url: "/api/db/educational-center/insert-single",
       });
 
-      openMessageBar("El Centro Educativo se ha creado correctamente", "success");
+      openMessageBar("El Aula se ha creado correctamente", "success");
       queryClient.invalidateQueries(["educational-center-get-all"]);
     },
     onSuccess: () => {
       reset();
-      handleIsCloseCreateModal();
+      handleIsOpen(false);
       closeBackdrop();
     },
     onError: () => {
-      openMessageBar("Ha ocurrido un error al crear el Centro Educativo", "error");
+      openMessageBar("Ha ocurrido un error al crear el Aula", "error");
       closeBackdrop();
     },
   });
@@ -64,12 +68,14 @@ export const useAddEducationalCenter = () => {
   const values = useMemo(
     () => ({
       control,
-      handleAddEducationlCenterForm: mutationAddEducationalCenter.mutateAsync,
+      handleAddEducationlCenterForm: mutationAddClassroom.mutateAsync,
+      handleIsOpen,
       handleSubmit,
-      isLoading: mutationAddEducationalCenter.isLoading,
+      isLoading: mutationAddClassroom.isLoading,
+      isOpen,
       reset,
     }),
-    [control, handleSubmit, mutationAddEducationalCenter.isLoading, mutationAddEducationalCenter.mutateAsync, reset],
+    [control, mutationAddClassroom.isLoading, mutationAddClassroom.mutateAsync, handleIsOpen, handleSubmit, isOpen, reset],
   );
 
   return values;
