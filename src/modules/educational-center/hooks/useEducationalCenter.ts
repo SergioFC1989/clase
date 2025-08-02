@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 
 import { useBackdrop } from "@/lib/components/backdrop/hooks/useBackdrop";
@@ -11,6 +11,8 @@ import { IEducationalCenterValue } from "../types/educational-center.type";
 const getAllUrl = "/api/db/educational-center/get-all";
 
 export const useEducationalCenter = () => {
+  const [visibleBubbleId, setVisibleBubbleId] = useState<string | null>(null);
+
   const { closeBackdrop, openBackdrop } = useBackdrop();
   const { openMessageBar } = useMessageBar();
 
@@ -61,8 +63,10 @@ export const useEducationalCenter = () => {
     () => ({
       data: response?.data,
       handleDeleteEducationalCenter: mutationDeleteEducationalCenter.mutateAsync,
+      setVisibleBubbleId,
+      visibleBubbleId,
     }),
-    [mutationDeleteEducationalCenter.mutateAsync, response?.data],
+    [mutationDeleteEducationalCenter.mutateAsync, response?.data, visibleBubbleId],
   );
 
   return values;
