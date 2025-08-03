@@ -7,12 +7,11 @@ import { useMessageBar } from "@/lib/components/message-bar/hooks/useMessageBar"
 import { queryClient } from "@/lib/services/clients/query.client";
 import { apiRequest } from "@/lib/services/requests/api.request";
 import { userIdState } from "@/lib/states/expiring-local-storage.state";
+import { IClassroomValue } from "@/modules/classroom/types/classroom.type";
 
-import { IEducationalCenterValue } from "../types/educational-center.type";
+const getAllUrl = "/api/db/classroom/get-all";
 
-const getAllUrl = "/api/db/educational-center/get-all";
-
-export const useEducationalCenter = () => {
+export const useClassroom = (educationalCenterId: string) => {
   const [visibleBubbleId, setVisibleBubbleId] = useState<string | null>(null);
 
   const { closeBackdrop, openBackdrop } = useBackdrop();
@@ -22,12 +21,17 @@ export const useEducationalCenter = () => {
     usuarioId: useRecoilValue(userIdState),
   };
 
-  const queryKey = ["educational-center-get-all", userId];
+  const _body = {
+    ...userId,
+    centroEducativoId: educationalCenterId,
+  };
+
+  const queryKey = ["classroom-get-all", _body];
 
   const { data: response } = useQuery({
     enabled: Boolean(getAllUrl),
     onError: () => {
-      openMessageBar("Ha ocurrido un error al obtener los Centros Educativos", "error");
+      openMessageBar("Ha ocurrido un error al obtener las Aulas", "error");
       closeBackdrop();
     },
     onSuccess: () => {
@@ -35,8 +39,8 @@ export const useEducationalCenter = () => {
     },
     queryFn: async () => {
       openBackdrop();
-      const response = await apiRequest<IEducationalCenterValue[]>({
-        body: userId,
+      const response = await apiRequest<IClassroomValue[]>({
+        body: _body,
         method: "POST",
         url: getAllUrl,
       });
@@ -49,23 +53,19 @@ export const useEducationalCenter = () => {
   const mutationDeleteEducationalCenter = useMutation({
     mutationFn: async (_id: string) => {
       openBackdrop();
-      await apiRequest({
+      const response = await apiRequest({
         method: "DELETE",
-        url: `/api/db/educational-center/delete-single`,
-        body: { ...userId, _id },
-      });
-
-      await apiRequest({
-        method: "DELETE",
-        url: `/api/db/classroom/delete-all`,
-        body: { ...userId, centroEducativoId: _id },
+        url: `/api/db/classroom/delete-single`,
+        body: { _id, ..._body },
       });
 
       queryClient.invalidateQueries(queryKey);
-      return openMessageBar("Centro Educativo eliminado correctamente", "success");
+      openMessageBar("Aula eliminada correctamente", "success");
+
+      return response;
     },
     onError: () => {
-      openMessageBar("Ha ocurrido un error al eliminar el Centro Educativo", "error");
+      openMessageBar("Ha ocurrido un error al eliminar el Aula", "error");
       closeBackdrop();
     },
     onSuccess: () => {

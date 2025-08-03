@@ -10,40 +10,45 @@ import { queryClient } from "@/lib/services/clients/query.client";
 import { apiRequest } from "@/lib/services/requests/api.request";
 import { userIdState } from "@/lib/states/expiring-local-storage.state";
 
-import { IAddEducationalCenterValue } from "../types/add-educational-center.type";
-import { addEducationalCenterValue } from "../values/add-educational-center.value";
+import { IAddClassroomValue } from "../types/add-classroom.type";
+import { addClassroomValue } from "../values/add-classroom.value";
 
-export const useAddEducationalCenter = () => {
+export const useAddClassroom = (educationalCenterId: string) => {
   const userId = {
     usuarioId: useRecoilValue(userIdState),
   };
 
   const { handleSubmit, control, reset } = useForm({
-    defaultValues: addEducationalCenterValue,
+    defaultValues: addClassroomValue,
   });
 
   const { closeBackdrop, openBackdrop } = useBackdrop();
   const { openMessageBar } = useMessageBar();
   const { handleIsCloseCreateModal } = useEntityCreateModal();
 
-  const mutationAddEducationalCenter = useMutation({
-    mutationFn: async (body: IAddEducationalCenterValue) => {
+  const mutationAddClassroom = useMutation({
+    mutationFn: async (body: IAddClassroomValue) => {
       openBackdrop();
 
       const _body = {
         ...body,
         ...userId,
+        centroEducativoId: educationalCenterId,
+        curso: {
+          fin: body.curso.fin,
+          inicio: body.curso.inicio,
+        },
       };
 
-      const response = await apiRequest<IAddEducationalCenterValue>({
+      const response = await apiRequest<IAddClassroomValue>({
         body: _body,
         method: "POST",
-        url: "/api/db/educational-center/get-single",
+        url: "/api/db/classroom/get-single",
       });
 
-      // If the educational center already exists, show a message and close the backdrop
+      // If the classroom already exists, show a message and close the backdrop
       if (response.data) {
-        openMessageBar("El Centro Educativo ya existe", "warning");
+        openMessageBar("El Aula ya existe", "warning");
         closeBackdrop();
         return;
       }
@@ -51,11 +56,11 @@ export const useAddEducationalCenter = () => {
       await apiRequest({
         body: _body,
         method: "POST",
-        url: "/api/db/educational-center/insert-single",
+        url: "/api/db/classroom/insert-single",
       });
 
-      openMessageBar("El Centro Educativo se ha creado correctamente", "success");
-      queryClient.invalidateQueries(["educational-center-get-all"]);
+      openMessageBar("El Aula se ha creado correctamente", "success");
+      queryClient.invalidateQueries(["classroom-get-all"]);
     },
     onSuccess: () => {
       reset();
@@ -63,7 +68,7 @@ export const useAddEducationalCenter = () => {
       closeBackdrop();
     },
     onError: () => {
-      openMessageBar("Ha ocurrido un error al crear el Centro Educativo", "error");
+      openMessageBar("Ha ocurrido un error al crear el Aula", "error");
       closeBackdrop();
     },
   });
@@ -71,12 +76,12 @@ export const useAddEducationalCenter = () => {
   const values = useMemo(
     () => ({
       control,
-      handleAddEducationlCenterForm: mutationAddEducationalCenter.mutateAsync,
+      handleAddClassroomForm: mutationAddClassroom.mutateAsync,
       handleSubmit,
-      isLoading: mutationAddEducationalCenter.isLoading,
+      isLoading: mutationAddClassroom.isLoading,
       reset,
     }),
-    [control, handleSubmit, mutationAddEducationalCenter.isLoading, mutationAddEducationalCenter.mutateAsync, reset],
+    [control, mutationAddClassroom.isLoading, mutationAddClassroom.mutateAsync, handleSubmit, reset],
   );
 
   return values;

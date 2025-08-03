@@ -45,8 +45,8 @@ export class MongoRequest {
   }
 
   // Get all documents from a collection
-  public static async getAllDocuments(collection: string) {
-    return this.performDbOperation(collection, async (dbCollection) => dbCollection.find({}).toArray());
+  public static async getAllDocuments(collection: string, query?: Record<string, unknown>) {
+    return this.performDbOperation(collection, async (dbCollection) => dbCollection.find(query ?? {}).toArray());
   }
 
   // Get a single document from a collection
@@ -62,5 +62,10 @@ export class MongoRequest {
   // Delete a single document from a collection
   public static async deleteSingleDocument(collection: string, query: { _id: ObjectId }) {
     return this.performDbOperation(collection, (dbCollection) => dbCollection.deleteOne(query));
+  }
+
+  // Delete all documents from a collection
+  public static async deleteAllDocuments(collection: string, query: { _id: ObjectId } & Record<string, unknown>) {
+    return this.performDbOperation(collection, (dbCollection) => dbCollection.deleteMany(query));
   }
 }
