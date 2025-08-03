@@ -23,7 +23,7 @@ const EducationalCenter = () => {
   return (
     <div className="w-full flex flex-col gap-4">
       <div className="w-full flex sm:flex-row flex-col justify-between gap-2">
-        <Breadcrumb items={breadcrumbItems} maxDisplayedItems={4} overflowAriaLabel="Más elementos" className="w-full" />
+        <Breadcrumb items={breadcrumbItems(router)} maxDisplayedItems={4} overflowAriaLabel="Más elementos" className="w-full" />
         <div className="flex">
           <AddEducationalCenter />
         </div>

@@ -62,9 +62,7 @@ export const useEducationalCenter = () => {
       });
 
       queryClient.invalidateQueries(queryKey);
-      openMessageBar("Centro Educativo eliminado correctamente", "success");
-
-      return response;
+      return openMessageBar("Centro Educativo eliminado correctamente", "success");
     },
     onError: () => {
       openMessageBar("Ha ocurrido un error al eliminar el Centro Educativo", "error");
