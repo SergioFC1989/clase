@@ -8,6 +8,7 @@ import {
   IconButton,
   Link,
   TeachingBubble,
+  Text,
 } from "@fluentui/react";
 import { useParams, useRouter } from "next/navigation";
 
@@ -23,7 +24,10 @@ const Classroom = () => {
   const params = useParams();
   const { educationalCenterId } = params as unknown as { educationalCenterId: string };
 
-  const { data, handleDeleteEducationalCenter, setVisibleBubbleId, visibleBubbleId } = useClassroom(educationalCenterId);
+  const { data, educationalCenterData, handleDeleteEducationalCenter, setVisibleBubbleId, visibleBubbleId } =
+    useClassroom(educationalCenterId);
+
+  const educationalCenterName = educationalCenterData?.data && educationalCenterData.data.nombre;
 
   return (
     <div className="w-full flex flex-col gap-4">
@@ -38,6 +42,9 @@ const Classroom = () => {
           <AddClassroom educationalCenterId={educationalCenterId} />
         </div>
       </div>
+
+      <Text variant="xLargePlus">{educationalCenterName}</Text>
+
       {Array.isArray(data) && !data.length ?
         <EntityEmptyState
           iconName="ClassroomLogo"

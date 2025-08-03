@@ -8,6 +8,7 @@ import { queryClient } from "@/lib/services/clients/query.client";
 import { apiRequest } from "@/lib/services/requests/api.request";
 import { userIdState } from "@/lib/states/expiring-local-storage.state";
 import { IClassroomValue } from "@/modules/classroom/types/classroom.type";
+import { IEducationalCenterValue } from "@/modules/educational-center/types/educational-center.type";
 
 const getAllUrl = "/api/db/classroom/get-all";
 
@@ -50,6 +51,29 @@ export const useClassroom = (educationalCenterId: string) => {
     queryKey,
   });
 
+  const { data: educationalCenterData } = useQuery({
+    enabled: Boolean("/api/db/educational-center/get-all"),
+    onError: () => {
+      openMessageBar("Ha ocurrido un error al obtener los Centros Educativos", "error");
+      closeBackdrop();
+    },
+    onSuccess: () => {
+      closeBackdrop();
+    },
+    queryFn: async () => {
+      openBackdrop();
+
+      const response = await apiRequest<IEducationalCenterValue>({
+        body: { ...userId, _id: _body.centroEducativoId },
+        method: "POST",
+        url: "/api/db/educational-center/get-single",
+      });
+
+      return response;
+    },
+    queryKey: ["educational-center-get-single", userId],
+  });
+
   const mutationDeleteEducationalCenter = useMutation({
     mutationFn: async (_id: string) => {
       openBackdrop();
@@ -76,11 +100,12 @@ export const useClassroom = (educationalCenterId: string) => {
   const values = useMemo(
     () => ({
       data: response?.data,
+      educationalCenterData,
       handleDeleteEducationalCenter: mutationDeleteEducationalCenter.mutateAsync,
       setVisibleBubbleId,
       visibleBubbleId,
     }),
-    [mutationDeleteEducationalCenter.mutateAsync, response?.data, visibleBubbleId],
+    [educationalCenterData, mutationDeleteEducationalCenter.mutateAsync, response?.data, visibleBubbleId],
   );
 
   return values;

@@ -1,11 +1,12 @@
 "use server";
+import { ObjectId } from "mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { MongoRequest } from "@/lib/services/requests/mongo.request";
 
 const getSingle = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const response = await MongoRequest.getSingleDocument("aulas", req.body);
+    const response = await MongoRequest.getSingleDocument("aulas", { ...req.body, _id: new ObjectId(req.body._id as string) });
     res.status(200).json({
       message: response ? "Aula encontrada correctamente" : "No se encontró el Aula solicitada",
       type: response ? "success" : "warning",
