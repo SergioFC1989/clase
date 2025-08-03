@@ -19,10 +19,10 @@ import { useClassroom } from "./hooks/useClassroom";
 import { classroomBreadcrumbItems } from "./utils/classroom.util";
 
 const Classroom = () => {
-  const params = useParams();
-  const { _id: educationalCenterId } = params as unknown as { _id: string };
-
   const router = useRouter();
+  const params = useParams();
+  const { educationalCenterId } = params as unknown as { educationalCenterId: string };
+
   const { data, handleDeleteEducationalCenter, setVisibleBubbleId, visibleBubbleId } = useClassroom(educationalCenterId);
 
   return (
@@ -60,10 +60,7 @@ const Classroom = () => {
                   >
                     <div className="flex flex-row items-center">
                       <DocumentCardLogo className="m-0 p-0 self-center" logoIcon="ClassroomLogo" />
-                      <div
-                        className="truncate w-full max-w-full"
-                        // onClick={() => router.push(`/educational-center/${elem._id}/classroom`)}
-                      >
+                      <div className="truncate w-full max-w-full" onClick={() => router.push(`classroom/${elem._id}/students`)}>
                         <Tag description={elem.modalidadEducativa} />
                         <DocumentCardTitle className="truncate font-semibold text-xl" title={`${elem.etapaEducativa} - ${elem.clase}`} />
                         <DocumentCardTitle className="truncate" showAsSecondaryTitle title={elem.hiloConductor} />

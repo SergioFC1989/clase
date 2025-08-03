@@ -7,12 +7,6 @@ const HomePage = () => {
         <li>
           <a href="/educational-center">Centro Educativo</a>
         </li>
-        <li>
-          <a href="/annual-plan-form">Annual Plan Form</a>
-        </li>
-        <li>
-          <a href="/annual-plan-report">Annual Plan Report</a>
-        </li>
       </ul>
     </div>
   );
