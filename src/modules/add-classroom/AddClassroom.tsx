@@ -4,24 +4,27 @@ import { useEntityCreateModal } from "@/lib/features/entity-create-modal/hooks/u
 
 import { addClassroomField } from "./fields/add-classroom.field";
 import { useAddClassroom } from "./hooks/useAddClassroom";
+import { IAddClassroom } from "./types/add-classroom.type";
 
-export const AddClassroom = () => {
-  const { control, handleAddEducationlCenterForm, handleSubmit, reset } = useAddClassroom();
+export const AddClassroom = ({ educationalCenterId }: IAddClassroom) => {
+  const { control, handleAddClassroomForm, handleSubmit, reset } = useAddClassroom(educationalCenterId);
   const { handleIsCloseCreateModal, handleIsOpenCreateModal, isOpen } = useEntityCreateModal();
 
   return (
-    <EntityCreateModal
-      control={control}
-      handleSubmit={handleSubmit}
-      iconName="ClassroomLogo"
-      isOpen={isOpen}
-      labelButtonSubmit="Crear"
-      listFields={addClassroomField}
-      onClose={handleIsCloseCreateModal}
-      onOpen={handleIsOpenCreateModal}
-      onSubmit={handleAddEducationlCenterForm}
-      reset={reset}
-      title="Crear Aula"
-    />
+    <>
+      <EntityCreateModal
+        control={control}
+        handleSubmit={handleSubmit}
+        iconName="ClassroomLogo"
+        isOpen={isOpen}
+        labelButtonSubmit="Crear"
+        listFields={addClassroomField}
+        onClose={handleIsCloseCreateModal}
+        onOpen={handleIsOpenCreateModal}
+        onSubmit={handleAddClassroomForm}
+        reset={reset}
+        title="Crear Aula"
+      />
+    </>
   );
 };

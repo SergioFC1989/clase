@@ -36,3 +36,19 @@ export interface IUsers {
   nombre: string;
   _id: string;
 }
+
+// nuevo tipado desde aqui
+export type TEducationalStage =
+  | "Educación Infantil"
+  | "Educación Primaria"
+  | "Educación Secundaria"
+  | "Educación Post Obligatoria"
+  | "PTVAL"
+  | "";
+
+export type TEducationalModality =
+  | "A: Aula ordinaria"
+  | "B: Aula ordinaria con apoyo variable"
+  | "C: Aula específica dentro de un centro ordinario"
+  | "D: Centro específico de educación especial"
+  | "";

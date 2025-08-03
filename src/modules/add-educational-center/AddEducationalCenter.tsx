@@ -13,6 +13,7 @@ export const AddEducationalCenter = () => {
     <EntityCreateModal
       control={control}
       handleSubmit={handleSubmit}
+      iconName="SingleBookmark"
       isOpen={isOpen}
       labelButtonSubmit="Crear"
       listFields={addEducationalCenterField}

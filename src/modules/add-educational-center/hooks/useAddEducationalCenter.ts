@@ -14,7 +14,9 @@ import { IAddEducationalCenterValue } from "../types/add-educational-center.type
 import { addEducationalCenterValue } from "../values/add-educational-center.value";
 
 export const useAddEducationalCenter = () => {
-  const userId = useRecoilValue(userIdState);
+  const userId = {
+    usuarioId: useRecoilValue(userIdState),
+  };
 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: addEducationalCenterValue,
@@ -28,8 +30,13 @@ export const useAddEducationalCenter = () => {
     mutationFn: async (body: IAddEducationalCenterValue) => {
       openBackdrop();
 
+      const _body = {
+        ...body,
+        ...userId,
+      };
+
       const response = await apiRequest<IAddEducationalCenterValue>({
-        body: { ...body, userId },
+        body: _body,
         method: "POST",
         url: "/api/db/educational-center/get-single",
       });
@@ -42,7 +49,7 @@ export const useAddEducationalCenter = () => {
       }
 
       await apiRequest({
-        body: { ...body, userId },
+        body: _body,
         method: "POST",
         url: "/api/db/educational-center/insert-single",
       });

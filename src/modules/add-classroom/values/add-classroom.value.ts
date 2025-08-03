@@ -1,6 +1,13 @@
 import { IAddClassroomValue } from "../types/add-classroom.type";
 
 export const addClassroomValue: IAddClassroomValue = {
-  nombre: "",
-  localidad: "",
+  centroEducativoId: "",
+  clase: "",
+  curso: {
+    fin: "",
+    inicio: "",
+  },
+  etapaEducativa: "",
+  hiloConductor: "",
+  modalidadEducativa: "",
 };
