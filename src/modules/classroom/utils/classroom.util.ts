@@ -1,8 +1,9 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export const classroomBreadcrumbItems = (_id: string, router: AppRouterInstance) => [
-  { text: "Inicio", key: "home", onClick: () => router.push("/") },
-  { text: "Centro Educativo", key: "educational-center", onClick: () => router.push("/educational-center") },
-  { text: _id, key: "id-educational-center" },
-  { text: "Aula", key: "classroom" },
+import { educationalCenterBreadcrumbItems } from "@/modules/educational-center/utils/educational-center.util";
+
+export const classroomBreadcrumbItems = (educationalCenterId: string, router: AppRouterInstance) => [
+  ...educationalCenterBreadcrumbItems(router),
+  { text: educationalCenterId, key: "educational-center-id" },
+  { text: "Aula", key: "classroom", onClick: () => router.push(`/educational-center/${educationalCenterId}/classroom`) },
 ];

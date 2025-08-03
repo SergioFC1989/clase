@@ -14,7 +14,7 @@ import { EntityEmptyState } from "@/lib/features/entity-empty-state/EntityEmptyS
 
 import { AddEducationalCenter } from "../add-educational-center/AddEducationalCenter";
 import { useEducationalCenter } from "./hooks/useEducationalCenter";
-import { breadcrumbItems } from "./utils/educational-center.util";
+import { educationalCenterBreadcrumbItems } from "./utils/educational-center.util";
 
 const EducationalCenter = () => {
   const router = useRouter();
@@ -23,7 +23,12 @@ const EducationalCenter = () => {
   return (
     <div className="w-full flex flex-col gap-4">
       <div className="w-full flex sm:flex-row flex-col justify-between gap-2">
-        <Breadcrumb items={breadcrumbItems(router)} maxDisplayedItems={4} overflowAriaLabel="Más elementos" className="w-full" />
+        <Breadcrumb
+          items={educationalCenterBreadcrumbItems(router)}
+          maxDisplayedItems={4}
+          overflowAriaLabel="Más elementos"
+          className="w-full"
+        />
         <div className="flex">
           <AddEducationalCenter />
         </div>
