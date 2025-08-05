@@ -47,6 +47,18 @@ const Form = <T extends FieldValues>({
                     isMultiline={field.isMultiline}
                   />
                 )}
+                {field.type === "number" && (
+                  <TextField<T>
+                    label={field.label}
+                    placeholder={field.placeholder}
+                    name={field.name}
+                    control={control}
+                    required={field.required}
+                    rows={field.rows}
+                    isMultiline={field.isMultiline}
+                    type="number"
+                  />
+                )}
                 {field.type === "password" && (
                   <TextField<T>
                     label={field.label}

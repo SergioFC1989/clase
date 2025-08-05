@@ -20,7 +20,7 @@ export const EntityCreateModal = <T extends FieldValues>({
       <DefaultButton iconProps={addIcon} onClick={onOpen}>
         {title}
       </DefaultButton>
-      <Modal containerClassName="w-full lg:w-[50%]" isOpen={isOpen}>
+      <Modal containerClassName="w-full lg:w-[70%]" isOpen={isOpen}>
         <div className="w-full flex flex-col justify-center gap-4 p-4">
           <div className="flex flex-row items-center justify-between">
             <div className="flex flex-row items-center gap-3">

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 
 import { useExpiringLocalStorage } from "@/lib/hooks/useExpiringLocalStorage";
-import { userIdState } from "@/lib/states/expiring-local-storage.state";
+import { userIdState } from "@/lib/states/user-id-state";
 
 export const UserInitializer = () => {
   const router = useRouter();

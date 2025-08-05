@@ -6,7 +6,7 @@ import { useBackdrop } from "@/lib/components/backdrop/hooks/useBackdrop";
 import { useMessageBar } from "@/lib/components/message-bar/hooks/useMessageBar";
 import { queryClient } from "@/lib/services/clients/query.client";
 import { apiRequest } from "@/lib/services/requests/api.request";
-import { userIdState } from "@/lib/states/expiring-local-storage.state";
+import { userIdState } from "@/lib/states/user-id-state";
 
 import { IEducationalCenterValue } from "../types/educational-center.type";
 

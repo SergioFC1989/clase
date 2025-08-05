@@ -4,8 +4,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { geminiRequest } from "@/lib/services/requests/gemini.request";
 
 const getSingle = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.body);
-
   try {
     const response = await geminiRequest(req.body);
 

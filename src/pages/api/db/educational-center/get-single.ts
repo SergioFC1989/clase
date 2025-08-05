@@ -5,7 +5,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { MongoRequest } from "@/lib/services/requests/mongo.request";
 
 const getSingle = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.body);
   try {
     const response = await MongoRequest.getSingleDocument("centros-educativos", { ...req.body, _id: new ObjectId(req.body._id as string) });
     res.status(200).json({

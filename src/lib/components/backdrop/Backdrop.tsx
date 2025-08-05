@@ -14,7 +14,7 @@ const Backdrop = ({ children }: IBackdrop) => {
         isOpen={isOpen}
       >
         <div className="overflow-hidden flex justify-center items-center w-full h-full">
-          <MoonLoader className="overflow-hidden" color="#28a88f" size={80} />
+          <MoonLoader className="overflow-hidden" color="#1F8470" size={80} />
         </div>
       </Modal>
       {children}

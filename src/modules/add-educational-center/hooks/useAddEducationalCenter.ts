@@ -8,7 +8,7 @@ import { useMessageBar } from "@/lib/components/message-bar/hooks/useMessageBar"
 import { useEntityCreateModal } from "@/lib/features/entity-create-modal/hooks/useEntityCreateModal";
 import { queryClient } from "@/lib/services/clients/query.client";
 import { apiRequest } from "@/lib/services/requests/api.request";
-import { userIdState } from "@/lib/states/expiring-local-storage.state";
+import { userIdState } from "@/lib/states/user-id-state";
 
 import { IAddEducationalCenterValue } from "../types/add-educational-center.type";
 import { addEducationalCenterValue } from "../values/add-educational-center.value";

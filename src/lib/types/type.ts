@@ -27,7 +27,7 @@ export interface IDynamicFormField<T extends FieldValues = FieldValues> extends 
   required?: boolean;
   rows?: number;
   step?: number;
-  type?: "dropdown" | "password" | "slider" | "text";
+  type?: "dropdown" | "password" | "slider" | "text" | "number";
 }
 
 export interface IUsers {
